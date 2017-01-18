@@ -22,14 +22,12 @@ input[type="number"],
 
 
 /* Remove number spinner from Firefox */
-
 input[type=number] {
     -moz-appearance: textfield;
 }
 
 
 /* Remove number spinner from Safari and Chrome */
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -38,7 +36,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-/* main */
+/* =============== MAIN BODY =============== */
 
 html,
 body {
@@ -46,10 +44,18 @@ body {
 }
 
 body {
+    /* fonts */
     font-family: 'Roboto', 'Arial', sans-serif;
     font-size: 14px;
-    background: #bebbb5;
-    color: black;
+    color: #fff;
+    
+    /* background image */
+    background-color: #333;
+    background-image: url(../assets/static_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* layout */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -62,6 +68,8 @@ body {
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
+/* =============== END MAIN BODY =============== */
+
 .momentum-header {
 
 }
@@ -70,13 +78,22 @@ body {
 
 }
 
+/* =============== HEADER =============== */
+
 header {
     position: fixed;
     width: 100%;
     height: 54px;
     margin: 0;
     padding: 0;
-    background: #000;
+    
+    /* shadow */
+    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));      /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));         /* Standard syntax (must be last) */
+    
+    
     z-index: 1; /* must be > 0 or Glyphicons show above header */
 }
 
@@ -90,13 +107,12 @@ header h4,
     display: inline-block;
     margin: 0;
     height: 100%;
-    color: #999;
+    color: #fff;
     font-weight: 500;
 }
 
 header h1 {
-    font-style: italic;
-    padding: 11px 0.5em 0 0.5em;
+    padding: 0.5em;
     font-size: 24px;
 }
 
@@ -132,19 +148,10 @@ header a {
     text-decoration: none;
 }
 
-header h4:hover,
-header h1:hover,
-#navIcons a:hover {
-    border-bottom: 3px solid rgb(95, 158, 160);
-    cursor: pointer;
-    color: white;
-}
 
-#navIcons a:active,
-header h4:active,
-header h1:active{
-    color: white;
-}
+/* ===============END HEADER =============== */
+
+/* =============== MAIN CONTENT =============== */
 
 article {
     -webkit-box-flex: 1;
@@ -180,15 +187,25 @@ section {
     padding: 0.5em;
     border: 1px black solid;
     align-self: center;
+    font-size: 4em;
 }
 
+/* =============== END MAIN CONTENT =============== */
+
+/* =============== footer =============== */
 
 footer {
     padding: 1em;
-    background: #404040;
-    color: #999;
+    color: #fff;
     font-size: 0.85em;
 /*    text-align: center;*/
+    
+    /* shadow */
+    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));      /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));         /* Standard syntax (must be last) */
+    
 }
 
 
