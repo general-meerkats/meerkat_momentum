@@ -183,14 +183,11 @@ section {
 
 
 footer {
-    -webkit-box-flex: 0;
-    -ms-flex: none;
-    flex: none;
-    padding: 0.85em 0;
+    padding: 1em;
     background: #404040;
     color: #999;
     font-size: 0.85em;
-    text-align: center;
+/*    text-align: center;*/
 }
 
 

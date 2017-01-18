@@ -1,0 +1,307 @@
+/* 
+ * adapted from:
+ * https://philipwalton.github.io/solved-by-flexbox/demos/grids/
+*/
+
+
+/* =============================== BASE GRID =============================== */
+
+.Grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    box-sizing: border-box;
+    /* width & height incl padding and border */
+}
+
+
+/* ========================== custom GRID tweaks =========================== */
+
+
+/* <header> Grid & Grid-cell 100% height for proper aignment */
+
+header .Grid {
+    height: 100%;
+}
+
+header .Grid-cell {
+    height: 100%;
+}
+
+
+/* ========================= GRID STYLE MODIFIERS ========================== */
+
+
+/* Gutters */
+
+.Grid--gutters {
+    margin: -0.5em 0 0.5em -0.5em;
+    /* origin values: -1em 0 1em -1em; */
+}
+
+.Grid--gutters > .Grid-cell {
+    padding: .5em 0 0 .5em;
+    /* origin values: 1em 0 0 1em; */
+}
+
+.Grid--guttersLg {
+    margin: -1.5em 0 1.5em -1.5em;
+}
+
+.Grid--guttersLg > .Grid-cell {
+    padding: 1.5em 0 0 1.5em;
+}
+
+.Grid--guttersXl {
+    margin: -2em 0 2em -2em;
+}
+
+.Grid--guttersXl > .Grid-cell {
+    padding: 2em 0 0 2em;
+}
+
+
+/* Alignment per row */
+
+.Grid--top {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -ms-grid-row-align: flex-start;
+    align-items: flex-start;
+}
+
+.Grid--bottom {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    -ms-grid-row-align: flex-end;
+    align-items: flex-end;
+}
+
+.Grid--center {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+}
+
+.Grid--justifyCenter {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+
+/* alignment per cell */
+
+.Grid-cell--top {
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+}
+
+.Grid-cell--bottom {
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+}
+
+.Grid-cell--center {
+    -ms-flex-item-align: center;
+    align-self: center;
+}
+
+.Grid-cell--autoSize {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+}
+
+
+/* ======================= GRID RESPONSIVE MODIFIERS ======================= */
+
+
+/* Base classes for all media */
+
+.Grid--fit > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.Grid--full > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%;
+}
+
+.Grid--1of2 > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 50%;
+    flex: 1 0 50%;
+}
+
+.Grid--1of3 > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 33.3333%;
+    flex: 1 0 33.3333%;
+}
+
+.Grid--1of4 > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 25%;
+    flex: 1 0 25%;
+}
+
+
+/* custom 30:70 split*/
+
+.Grid--1of2-30-70 > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 30%;
+    flex: 1 0 30%;
+}
+
+.Grid--1of2-30-70 > .Grid-cell:not(:first-child) {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 70%;
+    flex: 1 0 70%;
+}
+
+
+/* custom 70:30 split*/
+
+.Grid--1of2-70-30 > .Grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 70%;
+    flex: 1 0 70%;
+}
+
+.Grid--1of2-70-30 > .Grid-cell:not(:first-child) {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 30%;
+    flex: 1 0 30%;
+}
+
+
+/* Small screens */
+
+@media (min-width: 384px) {
+    .small-Grid--fit > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+    .small-Grid--full > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 100%;
+        flex: 1 0 100%;
+    }
+    .small-Grid--1of2 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+        flex: 1 0 50%;
+    }
+    .small-Grid--1of3 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 33.3333%;
+        flex: 1 0 33.3333%;
+    }
+    .small-Grid--1of4 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+        flex: 1 0 25%;
+    }
+}
+
+
+/* Medium screens */
+
+@media (min-width: 576px) {
+    .med-Grid--fit > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+    .med-Grid--full > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 100%;
+        flex: 1 0 100%;
+    }
+    .med-Grid--1of2 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+        flex: 1 0 50%;
+    }
+    .med-Grid--1of3 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 33.3333%;
+        flex: 1 0 33.3333%;
+    }
+    .med-Grid--1of4 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+        flex: 1 0 25%;
+    }
+}
+
+
+/* Large screens */
+
+@media (min-width: 960px) {
+    .large-Grid--fit > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+    }
+    .large-Grid--full > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 100%;
+        flex: 1 0 100%;
+    }
+    .large-Grid--1of2 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 50%;
+        flex: 1 0 50%;
+    }
+    .large-Grid--1of3 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 33.3333%;
+        flex: 1 0 33.3333%;
+    }
+    .large-Grid--1of4 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 25%;
+        flex: 1 0 25%;
+    }
+    /* custom 30:70 split*/
+    .large-Grid--1of2-30-70 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 30%;
+        flex: 1 0 30%;
+    }
+    .large-Grid--1of2-30-70 > .Grid-cell:not(:first-child) {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 70%;
+        flex: 1 0 70%;
+    }
+    /* custom 70:30 split*/
+    .large-Grid--1of2-70-30 > .Grid-cell {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 70%;
+        flex: 1 0 70%;
+    }
+    .large-Grid--1of2-70-30 > .Grid-cell:not(:first-child) {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 30%;
+        flex: 1 0 30%;
+    }
+}
