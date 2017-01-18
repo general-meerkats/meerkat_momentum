@@ -1,0 +1,243 @@
+/* resets */
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+/* anti-iOS Safari / Webkit tweak */
+textarea,
+input.text,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+input[type="date"],
+input[type="number"],
+.input-checkbox {
+    -webkit-appearance: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+
+/* Remove number spinner from Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+/* Remove number spinner from Safari and Chrome */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    /* Removes leftover margin */
+}
+
+
+/* main */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: 14px;
+    background: #bebbb5;
+    color: black;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+.momentum-header {
+    
+}
+
+.momentum-footer {
+    
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 54px;
+    margin: 0;
+    padding: 0;
+    background: #000;
+    z-index: 1; /* must be > 0 or Glyphicons show above header */
+}
+
+nav {
+    height: 100%;
+}
+
+header h1,
+header h4,
+#navIcons a {
+    display: inline-block;
+    margin: 0;
+    height: 100%;
+    color: #999;
+    font-weight: 500;
+}
+
+header h1 {
+    font-style: italic;
+    padding: 11px 0.5em 0 0.5em;
+    font-size: 24px;    
+}
+
+/* 
+ * icon nav links visible when > @media query below
+*/
+#navIcons {
+    display: inline-block;
+    height: 100%;
+}
+
+#navIcons a {
+    text-decoration: none;
+    padding: 15px .75em;
+    font-size: 22px;
+}
+
+/* 
+ * text nav links invisible when < @media query below
+*/
+#navText {
+    display: none;
+    height: 100%;
+}
+
+header h4 {
+    padding: 19px 0.5em 0 0.5em;
+    font-size: 17px;
+}
+
+header a {
+    outline: 0;
+    text-decoration: none;
+}
+
+header h4:hover,
+header h1:hover,
+#navIcons a:hover {
+    border-bottom: 3px solid rgb(95, 158, 160);   
+    cursor: pointer;
+    color: white;
+}
+
+#navIcons a:active,
+header h4:active,
+header h1:active{
+    color: white;
+}
+
+article {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 0.25em;
+    width: 100%;
+    
+    /* push article beneath header */
+    margin-top: 54px;
+    
+    /* limit main content width and center */
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section {
+    -webkit-box-flex: 0;
+    -ms-flex: 0;
+    flex: 0;
+    padding: 0.5em;
+}
+
+
+footer {
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+    padding: 0.85em 0;
+    background: #404040;
+    color: #999;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+
+.footer-credit {
+    display: inline-block;
+    margin: .25em;
+    vertical-align: middle;
+}
+
+.footer-social {
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px;
+    width: 106px;
+}
+
+footer a {
+    color: #e5e5e5;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Greater than 640x, show nav text & hide icons */
+@media all and (min-width: 640px) {
+    #navText {
+        display: inline-block;
+    }
+    
+    #navIcons {
+        display: none;
+    }
+        
+
+    
+}
+
+/* Tiny screens: narrow nav icon spacing & full width content */
+@media all and (max-width: 360px) {
+    
+    #navIcons a {
+        padding: 15px .5em;
+    }
+    
+    article {
+        padding: 0 0 0.5em 0;
+    }
+    
+    footer p {
+        font-size: 13px;
+    }
+    
+}
