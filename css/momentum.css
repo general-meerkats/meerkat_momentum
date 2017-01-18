@@ -57,16 +57,17 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    justify-content: start;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
 .momentum-header {
-    
+
 }
 
 .momentum-footer {
-    
+
 }
 
 header {
@@ -96,10 +97,10 @@ header h4,
 header h1 {
     font-style: italic;
     padding: 11px 0.5em 0 0.5em;
-    font-size: 24px;    
+    font-size: 24px;
 }
 
-/* 
+/*
  * icon nav links visible when > @media query below
 */
 #navIcons {
@@ -113,7 +114,7 @@ header h1 {
     font-size: 22px;
 }
 
-/* 
+/*
  * text nav links invisible when < @media query below
 */
 #navText {
@@ -134,7 +135,7 @@ header a {
 header h4:hover,
 header h1:hover,
 #navIcons a:hover {
-    border-bottom: 3px solid rgb(95, 158, 160);   
+    border-bottom: 3px solid rgb(95, 158, 160);
     cursor: pointer;
     color: white;
 }
@@ -152,20 +153,23 @@ article {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    -ms-flex-direction: row;
+    flex-direction: horizontal;
     padding: 0.25em;
     width: 100%;
-    
+    justify-content: center;
+
     /* push article beneath header */
     margin-top: 54px;
-    
+
     /* limit main content width and center */
     max-width: 1080px;
     margin-left: auto;
     margin-right: auto;
+
+    border: 1px black solid;
 }
 
 section {
@@ -173,6 +177,8 @@ section {
     -ms-flex: 0;
     flex: 0;
     padding: 0.5em;
+    border: 1px black solid;
+    align-self: center;
 }
 
 
@@ -216,28 +222,28 @@ footer a:hover {
     #navText {
         display: inline-block;
     }
-    
+
     #navIcons {
         display: none;
     }
-        
 
-    
+
+
 }
 
 /* Tiny screens: narrow nav icon spacing & full width content */
 @media all and (max-width: 360px) {
-    
+
     #navIcons a {
         padding: 15px .5em;
     }
-    
+
     article {
         padding: 0 0 0.5em 0;
     }
-    
+
     footer p {
         font-size: 13px;
     }
-    
+
 }
