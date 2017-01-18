@@ -156,7 +156,8 @@ article {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
-    flex-direction: horizontal;
+    flex-direction: vertical;
+    flex-flow: column;
     padding: 0.25em;
     width: 100%;
     justify-content: center;
