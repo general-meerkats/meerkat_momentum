@@ -48,7 +48,9 @@ body {
 body {
     font-family: 'Roboto', 'Arial', sans-serif;
     font-size: 14px;
-    background: #bebbb5;
+    background-image: url(/assets/static_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     color: black;
     display: -webkit-box;
     display: -ms-flexbox;
