@@ -51,7 +51,7 @@ body {
     
     /* background image */
     background-color: #333;
-    background-image: url(/assets/static_background.jpg);
+    background-image: url(assets/static_background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     
