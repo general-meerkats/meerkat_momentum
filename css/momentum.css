@@ -49,11 +49,14 @@ body {
     font-size: 14px;
     color: #fff;
     
-    /* background image */
+    /* background color and image */
     background-color: #333;
-    background-image: url(../assets/static_background.jpg);
+    background-attachment: fixed;
+    background-position: bottom center;
     background-repeat: no-repeat;
     background-size: cover;
+    transition: background-image 2s linear;
+/*    opacity: 0;*/
     
     /* layout */
     display: -webkit-box;
