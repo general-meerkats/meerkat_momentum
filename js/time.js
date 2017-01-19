@@ -13,12 +13,22 @@ var time = {
 	},
 
 	getTime: function(){
-		var hours;
+		var hours = this.getHours();
 
-		if (this.isStandard)
-			hours = this.getHours() % 12;
-		else
+		if (this.isStandard){
+			if ( (this.getHours() >= 13) && (this.getHours() < 24)){
+				hours = this.getHours() % 12;
+			}
+			else if (this.getHours() == 24){
+				hours = 12;
+			}
+			else{
+				hours = this.getHours()
+			}
+		}
+		else{
 			hours = this.getHours();
+		}
 		
 		var minutes = ("0" + this.getMinutes()).slice(-2);
 		return (hours + ":" + minutes)
@@ -51,7 +61,7 @@ var time = {
 		else if (hour <= 17)
 			timeOfDay = "Evening"
 
-		var message = `Good ${timeOfDay}, [username]`;
+		var message = `Good ${timeOfDay}, []]`;
 		return message
 
 	},
@@ -62,7 +72,7 @@ var time = {
 	},
 
 	displayPeriod: function(){
-		var messagePeriod = document.getElementById('period');
+		var messagePeriod = document.getElementById('time-period');
 		messagePeriod.textContent = this.getPeriod();
 	},
 
@@ -73,7 +83,11 @@ var time = {
 	init: function(){
 
 		this.displayTime();
-		// this.displayPeriod();
+		if (this.isStandard){
+			this.displayPeriod();
+		}
+
+		
 		this.displayMessage();
 
 	}
