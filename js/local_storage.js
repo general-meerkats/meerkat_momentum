@@ -55,7 +55,7 @@ var LS = (function() {
          result;
 
       try {
-         storage = $window.localStorage;
+         storage = window.localStorage;
          storage.setItem(uid, uid);
          result = storage.getItem(uid) === uid;
          storage.removeItem(uid);
