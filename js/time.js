@@ -67,7 +67,7 @@ var time = {
 	},
 
 	displayMessage: function(){
-		var messageDisplay = document.getElementById('greetings');
+		var messageDisplay = document.getElementById('time-message');
 		messageDisplay.textContent = this.getMessage();
 	},
 	init: function(){
@@ -84,6 +84,3 @@ setInterval(function(){
 	time.init();
 }, 1000);
 
-console.log(time.getTime());
-console.log(time.getHours());
-console.log(time.getMinutes());
