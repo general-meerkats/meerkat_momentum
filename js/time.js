@@ -45,7 +45,7 @@ var time = {
 
 		var timeOfDay;
 		if (hour < 12)
-			timeOfDay = "Afternoon";
+			timeOfDay = "Morning";
 		else if (hour >= 12 || hour > 17)
 			timeOfDay = "Afternoon";
 		else if (hour <= 17)
