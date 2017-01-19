@@ -51,7 +51,7 @@ var time = {
 		else if (hour <= 17)
 			timeOfDay = "Evening"
 
-		var message = `Good ${timeOfDay}, Thomas Nguyen`;
+		var message = `Good ${timeOfDay}, [username]`;
 		return message
 
 	},
