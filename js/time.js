@@ -19,7 +19,7 @@ var time = {
 			if ( (this.getHours() >= 13) && (this.getHours() < 24)){
 				hours = this.getHours() % 12;
 			}
-			else if (this.getHours() == 24){
+			else if (this.getHours() == 0){
 				hours = 12;
 			}
 			else{
