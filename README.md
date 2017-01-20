@@ -8,13 +8,15 @@ Demo:
 
 https://belcurv.github.io/meerkat_momentum/
 
+----------------
+
 #### On using local-storage.js
 
-`local-storage.js` is a wrapper for the html5 local storage DOM methods.  It adds a feature check, does the JSON serializing & de-seializing, and exposes four public methods.  About those methods...
+`local-storage.js` is a wrapper for the html5 local storage DOM methods.  It adds a feature check, does the JSON serializing & de-serializing, and exposes four public methods.  About those methods...
 
 **Private Methods**
 
-There's only one, the anonymous IFFE assigned to `var storage`.  It tests whether a browser can use localStorage and if localStorage is working by writing to it, reading from it and comparing the output to the original input (they should be identical).  It returns true/false along with a local reference to `window.localStorage`.
+There's only one, the anonymous IFFE assigned to `var storage`.  It tests whether a browser can use localStorage and if localStorage is working by writing to it, reading from it and comparing what it got back to what it put in (the two should be identical).  It returns true/false along with a local reference to `window.localStorage`.
 
 ```javascript
     var storage = (function() {
@@ -34,20 +36,22 @@ There's only one, the anonymous IFFE assigned to `var storage`.  It tests whethe
 
 ** Public Methods **
 
-These four methods are exposed by returning the object literal at the end:
+These four methods are exposed through the object literal returned at the end:
 
 ```javascript
     return {
-      setData   : setData,
-      getData   : getData,
-      deleteData: deleteData,
-      clearData : clearData
-   };
+        setData   : setData,      // save to localStorage
+        getData   : getData,      // get from localStorage
+        deleteData: deleteData,   // delete one location from localStorage
+        clearData : clearData     // delete everything in localStorage
+    };
 
 ```
 
 1.  `setData()`
-    Stores something in localStorage.  Takes two parameters, a location 'key' and the 'value' you want to store in that location.  `loc` must be a string; `val` can be anything.  The method first checks to make sure localStorage is available and working, _JSON.stringifies_ the input value (localStorage only accepts strings) and stores it in the location specified by the `loc` argument.
+    Stores something in localStorage.  Takes two parameters, a location 'key' and a 'value' to store in that location.  `loc` must be a string; `val` can be anything (it gets stringified).  The method first checks to make sure localStorage is available, _JSON.stringifies_ the input value (localStorage only accepts strings) and stores it in the location specified by `loc`.
+    
+    The function:
 
     ```javascript
     function setData(loc, val) {
@@ -56,9 +60,15 @@ These four methods are exposed by returning the object literal at the end:
         }
     }
     ```
+    
+    In use:
+    
+    `LS.setData('momentum-storage', 'Collin and I need to work on layout and quotes.');`
 
 2.  `getData()`
-    Retrieves stuff from locaStorage.  Takes one parameter: `loc`, the string 'key' location you previously stashed your stuff in.  Because the stored value is a string, the method parses the value before returning it.
+    Retrieves something from locaStorage.  Takes one parameter, `loc` - a string.  It's the location 'key' where you previously stored your thing.  Because all stored values are strings, the method parses the value before returning it.
+    
+    The function:
     
     ```javascript
     function getData(loc) {
@@ -68,8 +78,14 @@ These four methods are exposed by returning the object literal at the end:
     }
     ```
     
+    In use:
+    
+    `LS.getData('momentum-storage');`
+    
 3.  `deleteData()`
-    Deletes only the specified 'key' (and its associated value) from localStorage.  Takes one parameter: `loc`, the string 'key' location.
+    Deletes the specified 'key' and its associated value from localStorage.  Takes one parameter: `loc`, the string location 'key'.
+    
+    The function:
     
     ```
     function deleteData(loc) {
@@ -78,9 +94,15 @@ These four methods are exposed by returning the object literal at the end:
         }
     }
     ```
+    
+    In use:
+    
+    `LS.deleteData('momentum-storage');`
 
 4.  `clearData()`
-    Deletes everything associated with the app in localStorage.  It takes no parameters and just calls `.clear()`.
+    Deletes **every key** in localStorage associated with our app.  It takes no parameters and just calls `.clear()`.
+    
+    The function:
     
     ```javascript
     function clearData() {
@@ -89,12 +111,16 @@ These four methods are exposed by returning the object literal at the end:
         }
     }
     ```
+    
+    In use:
+    
+    `LS.clearData();`
 
-**How do you use it**
+**How do you use this?**
 
-Basically you just call the module and method, passing in the required arguments.  The following examples use jQuery methods.
+Just call the module and method, passing in the required arguments.  The following examples include some jQuery.
 
-For example, we might want to set initial conditions on page load.  We can do this conditionally, where we either grab values from localStorage or from some defaults:
+We might want to conditionally set initial app conditions on page load depending on whether localStorage exists:
 
 ```javascript
     var defaultName = [
@@ -113,7 +139,7 @@ For example, we might want to set initial conditions on page load.  We can do th
     }
 ```
 
-Then `loadState()` could be called by some other function:
+A `render()` function might then call `loadState()`:
 
 ```javascript
     function render() {
@@ -124,12 +150,12 @@ Then `loadState()` could be called by some other function:
     }
 ```
 
-Saving is similarly easy.  We might have an element with an event and event handler:
+Example of saving data from an `<input>` on button click:
 
 ```javascript
-    $('#magicButton').on('click', saveUserName);
+    $('#saveUserBtn').on('click', saveUserName);
 
-    // Save user name to local storage
+    // click handler = save user name to local storage
     function saveUserName() {
         // capture input data
         var userName = $('#nameInputElement').val();
