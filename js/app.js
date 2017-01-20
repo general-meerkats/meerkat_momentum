@@ -27,7 +27,16 @@ $(document).ready(function () {
         $('#about-panel').toggleClass('about-show');
         
         evt.stopPropagation();
+    });
+    
+    
+    // todo panel toggle show/hide
+    $('#todos-btn').on('click', function (evt) {
         
+        // add / remove CSS class
+        $('#todos-panel').toggleClass('todos-show');
+        
+        evt.stopPropagation();
     });
     
 });

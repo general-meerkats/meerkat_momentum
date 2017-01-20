@@ -13,6 +13,9 @@
     <!-- css -->
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/momentum.css">
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="assets/meerkat_favicon.png">
 
 </head>
 <body>
@@ -20,22 +23,22 @@
     <!-- stupid DOM element used for background fade-in -->
     <div class="splash"></div>
     
-    <aside id="about-panel" class="about">
-        The General Meerkats are:
-        
-    </aside>
-
     <header>
         <div class="Grid">
             <div class="Grid-cell">
-                <img id="meerkat-btn" class="brand" src="assets/meerkat.png" />
+                <img id="meerkat-btn" class="brand" src="assets/meerkat.png" title="About"/>
             </div>
             <div class="Grid-cell--autoSize">
-                [Weather]
+                <div id="weather-feature">
+                    [weather]
+                </div>
             </div>
         </div>   
-       
     </header>
+    
+    <aside id="about-panel" class="panel about">
+        The General Meerkats are:
+    </aside>
 
     <article>
         <section>
@@ -47,11 +50,18 @@
        </section>
 
        <section>
-            <span class="ask-focus">What is your main focus for today?</span>
-            <input id="focus-input" type="text" autofocus />
+            <form>
+                <label for="focus-input" class="ask-focus">
+                    What is your main focus for today?
+                </label>
+                <input id="focus-input" type="text" autofocus />
+            </form>            
        </section>
-
     </article>
+    
+    <aside id="todos-panel" class="panel todos">
+        Todos go here:
+    </aside>
 
     <footer>
         <div class="image-credit">
@@ -60,8 +70,8 @@
         <div class="quote" id="quoteFeature">
             <p></p>
         </div>
-        <div class="todoToggle">
-            <span>[todo toggle]</span>
+        <div id="todos-btn" class="footer-right">
+            Todo
         </div>
     </footer>
     

@@ -110,23 +110,42 @@ header {
 
 /* ============================== END HEADER =============================== */
 
-/* ============================== ABOUT =============================== */
+/* ============================== PANELS =============================== */
+
+.panel {
+    position: fixed;
+    width: 300px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: rgba(0,0,0,.6);
+}
 
 .about {
-    position: fixed;
+    top: 0;
     left: -300px;
     height: 100%;
-    width: 300px;
-    padding: 74px 5px;
-    background: rgba(0,0,0,.5);
+    padding-top: 65px;
     transition: left 0.3s ease;
+}
+
+.todos {
+    bottom: 100px;
+    right: -300px;
+    height: 500px;
+    padding-top: 10px;
+    transition: right 0.3s ease;
+    border-radius: 5px;
 }
 
 .about-show {
     left: 0px;
 }
 
-/* ============================== END ABOUT =============================== */
+.todos-show {
+    right: 10px;
+}
+
+/* ============================== END PANELS =============================== */
 
 
 /* ============================== MAIN CONTENT ============================= */
@@ -165,10 +184,16 @@ section {
 /*    border: 1px black solid;*/
     align-self: center;
     text-align: center;
+    text-shadow: 0px 0px 15px #000;
 }
 
-section .time {
-    font-size: 8em;
+
+section #time {
+    font-size: 9em;
+}
+
+section #time-period {
+    font-size: 6em;
 }
 
 .greeting {
@@ -189,6 +214,7 @@ section .time {
     text-align: center;
     border-bottom: 2px solid white;
     outline: 0;
+    text-shadow: none;
 }
 
 /* =========================== END MAIN CONTENT ============================ */
@@ -201,13 +227,14 @@ footer {
     margin: 0;
     padding: 0;
     color: #fff;
-    font-size: 1em;
+    font-weight: bold;
     
     /* shadow */
     background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
     background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
     background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+/*    border-top: 1px solid white;*/
     
 }
 
@@ -222,14 +249,29 @@ footer .quote {
 
 
 footer .image-credit,
-footer .todoToggle {
-    flex: 0 100px;
-    align-self: center;
-    padding: 0.25em;
+footer .footer-right {
+    box-sizing: border-box;
+    height: 100%;
+    flex: 0 auto;
+    align-self: flex-end;
+    padding: 1em;
+    border-bottom: 2px solid transparent;
 }
 
-footer .todoToggle {
+footer .footer-right {
+    cursor: pointer;
     text-align: right;
+    
+    /* prevent highlighting text */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+}
+
+footer .footer-right:hover {
+    border-bottom: 2px solid #fff;
 }
 
 /* ============================== END FOOTER =============================== */
