@@ -16,7 +16,7 @@ https://belcurv.github.io/meerkat_momentum/
 
 **Private Methods**
 
-There's only one, the anonymous IFFE assigned to `var storage`.  It tests whether a browser can use localStorage and if localStorage is working by writing to it, reading from it and comparing what it got back to what it put in (the two should be identical).  It returns true/false along with a local reference to `window.localStorage`.
+There's only one, the anonymous IIFE assigned to `var storage`.  It tests whether a browser can use localStorage and if localStorage is working by writing to it, reading from it and comparing what it got back to what it put in (the two should be identical).  It returns true/false along with a local reference to `window.localStorage`.
 
 ```javascript
     var storage = (function() {
