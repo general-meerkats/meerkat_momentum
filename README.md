@@ -34,7 +34,7 @@ There's only one, the anonymous IIFE assigned to `var storage`.  It tests whethe
     }());
 ```
 
-** Public Methods **
+**Public Methods**
 
 These four methods are exposed through the object literal returned at the end:
 
