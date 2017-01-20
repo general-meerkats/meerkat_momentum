@@ -5,49 +5,57 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <title>Momentum Thing</title>
+    
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 
     <!-- css -->
-    <link rel="stylesheet" href="css/momentum.css">
     <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/momentum.css">
 
 </head>
 <body>
+    
+    <!-- stupid DOM element used for background fade-in -->
+    <div class="splash"></div>
 
     <header>
         <div class="Grid">
             <div class="Grid-cell">
-                <h4>Home link icon, 'Plus', 'About', 'Blog'</h4>
+                <span class="brand">M</span>
             </div>
             <div class="Grid-cell--autoSize">
-                <h4>Chrome web store link</h4>
+                [Weather]
             </div>
         </div>   
        
     </header>
 
     <article>
-
-       <section>
- <div id="time">[Time]</div>
-            <div id="time-period">[Time-Period]</div>
-            <div id="time-message">[Time-Based Message]</div>
+        <section>
+            <div class="time">
+                <span id="time"><!-- Time --></span>
+                <span id="time-period"><!-- AM/PM --></span>
+            </div>
+            <div class="greeting" id="time-message"><!-- greeting --></div>
        </section>
 
        <section>
-            [Inspirational Quote]<br/>
-            [To-Do List]<br/>
+            <span class="ask-focus">What is your main focus for today?</span>
+            <input id="focus-input" type="text" autofocus />
        </section>
 
     </article>
 
     <footer>
-        <div class="Grid">
-            <div class="Grid-cell">
-                <p>image credit</p>
-            </div>
-            <div class="Grid-cell--autoSize">
-                <p>'Help', 'Contact', 'Privacy', social links</p>
-            </div>
+        <div class="image-credit">
+            <p>Spooky Mountains</p>
+        </div>
+        <div class="quote" id="quoteFeature">
+            <p></p>
+        </div>
+        <div class="todoToggle">
+            <span>[todo toggle]</span>
         </div>
     </footer>
     
@@ -57,6 +65,7 @@
     <script src="js/local_storage.js"></script>
     <script src="js/time.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/quotes.js"></script>
 
 
 </body>

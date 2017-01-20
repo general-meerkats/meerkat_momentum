@@ -36,7 +36,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-/* =============== MAIN BODY =============== */
+/* =============================== MAIN BODY =============================== */
 
 html,
 body {
@@ -45,18 +45,12 @@ body {
 
 body {
     /* fonts */
-    font-family: 'Roboto', 'Arial', sans-serif;
+    font-family: 'Josefin Sans', 'Arial', sans-serif;
     font-size: 14px;
     color: #fff;
     
     /* background color and image */
     background-color: #333;
-    background-attachment: fixed;
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: background-image 2s linear;
-/*    opacity: 0;*/
     
     /* layout */
     display: -webkit-box;
@@ -69,19 +63,26 @@ body {
     justify-content: start;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
-
-/* =============== END MAIN BODY =============== */
-
-.momentum-header {
-
+/* full bleed background image container style */
+.splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-attachment: fixed;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 0.75s linear;
+    opacity: 0;
+    z-index: -1;
 }
 
-.momentum-footer {
+/* ============================= END MAIN BODY ============================= */
 
-}
 
-/* =============== HEADER =============== */
+/* ================================ HEADER ================================= */
 
 header {
     position: fixed;
@@ -91,70 +92,29 @@ header {
     padding: 0;
     
     /* shadow */
-    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));      /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));         /* Standard syntax (must be last) */
-    
+    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    
     
     z-index: 1; /* must be > 0 or Glyphicons show above header */
 }
 
-nav {
-    height: 100%;
-}
-
-header h1,
-header h4,
-#navIcons a {
-    display: inline-block;
-    margin: 0;
-    height: 100%;
-    color: #fff;
-    font-weight: 500;
-}
-
-header h1 {
-    padding: 0.5em;
-    font-size: 24px;
-}
-
-/*
- * icon nav links visible when > @media query below
-*/
-#navIcons {
-    display: inline-block;
-    height: 100%;
-}
-
-#navIcons a {
-    text-decoration: none;
-    padding: 15px .75em;
-    font-size: 22px;
-}
-
-/*
- * text nav links invisible when < @media query below
-*/
-#navText {
-    display: none;
-    height: 100%;
-}
-
-header h4 {
-    padding: 19px 0.5em 0 0.5em;
-    font-size: 17px;
-}
-
-header a {
-    outline: 0;
-    text-decoration: none;
+.brand {
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    width: 121px;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 5px 10px;
 }
 
 
-/* ===============END HEADER =============== */
+/* ============================== END HEADER =============================== */
 
-/* =============== MAIN CONTENT =============== */
+
+/* ============================== MAIN CONTENT ============================= */
 
 article {
     -webkit-box-flex: 1;
@@ -187,80 +147,94 @@ section {
     -ms-flex: 0;
     flex: 0;
     padding: 0.5em;
-    border: 1px black solid;
+/*    border: 1px black solid;*/
     align-self: center;
+    text-align: center;
+}
+
+section .time {
+    font-size: 8em;
+}
+
+.greeting {
     font-size: 4em;
 }
 
-/* =============== END MAIN CONTENT =============== */
+.ask-focus {
+    display: inline-block;
+    font-size: 3.5em;
+    width: 720px
+}
 
-/* =============== footer =============== */
+#focus-input {
+    width: 720px;
+    font-size: 3em;
+    color: white;
+    background: rgba(255,255,255,0.1);
+    text-align: center;
+    border-bottom: 2px solid white;
+    outline: 0;
+}
 
+/* =========================== END MAIN CONTENT ============================ */
+
+
+/* ================================ FOOTER ================================= */
 footer {
-    padding: 1em;
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     color: #fff;
-    font-size: 0.85em;
-/*    text-align: center;*/
+    font-size: 1em;
     
     /* shadow */
-    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));      /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));    /* For Firefox 3.6 to 15 */
-    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));         /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
     
 }
 
+/* quote feature */
+footer .quote {
+    flex: 1;
+    padding: 0.25em 2em;
+    text-align: center;
+    align-self: center;
+}
+/* end quote feature */
 
-.footer-credit {
-    display: inline-block;
-    margin: .25em;
-    vertical-align: middle;
+
+footer .image-credit,
+footer .todoToggle {
+    flex: 0 100px;
+    align-self: center;
+    padding: 0.25em;
 }
 
-.footer-social {
-    display: inline-block;
-    vertical-align: middle;
-    height: 20px;
-    width: 106px;
+footer .todoToggle {
+    text-align: right;
 }
 
-footer a {
-    color: #e5e5e5;
-    text-decoration: none;
-}
+/* ============================== END FOOTER =============================== */
 
-footer a:hover {
-    text-decoration: underline;
-}
 
+/* ============================== RESPONSIVE =============================== */
 
 /* Greater than 640x, show nav text & hide icons */
 @media all and (min-width: 640px) {
-    #navText {
-        display: inline-block;
-    }
-
-    #navIcons {
-        display: none;
-    }
-
-
-
+    
 }
 
 /* Tiny screens: narrow nav icon spacing & full width content */
 @media all and (max-width: 360px) {
 
-    #navIcons a {
-        padding: 15px .5em;
+    section {
+        font-size: 2em;
     }
-
+    
     article {
         padding: 0 0 0.5em 0;
     }
-
-    footer p {
-        font-size: 13px;
-    }
-
 }
