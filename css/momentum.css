@@ -102,7 +102,9 @@ header {
 
 .brand {
     height: 54px;
-    margin: 5px
+    margin: 5px;
+    z-index: 9999;
+    cursor: pointer;
 }
 
 
@@ -112,13 +114,16 @@ header {
 
 .about {
     position: fixed;
-/*    top: 64px;*/
     left: -300px;
-/*    height: calc(100% - 64px);*/
     height: 100%;
     width: 300px;
-    background: rgba(255,255,255,.5);
+    padding: 74px 5px;
+    background: rgba(0,0,0,.5);
     transition: left 0.3s ease;
+}
+
+.about-show {
+    left: 0px;
 }
 
 /* ============================== END ABOUT =============================== */
