@@ -114,22 +114,22 @@ header {
 
 .panel {
     position: fixed;
-    width: 360px;
-    padding: 10px 5px;
+    width: 380px;
+    padding: 10px;
     background: rgba(0,0,0,.6);
     border-radius: 5px;
 }
 
 .about-panel {
     top: 64px;
-    left: -360px;
+    left: -380px;
     height: calc(50% - 64px);
     transition: transform 0.3s ease;
 }
 
 .todos-panel {
     bottom: 70px;
-    right: -360px;
+    right: -380px;
     height: calc(100% - 134px);
     padding-top: 10px;
     transition: transform 0.3s ease;
@@ -137,7 +137,7 @@ header {
 
 .settings-panel {
     bottom: 70px;
-    left: -360px;
+    left: -380px;
     height: calc(50% - 70px);
     padding-top: 10px;
     transition: transform 0.3s ease;
@@ -145,11 +145,58 @@ header {
 
 .about-show,
 .settings-show {
-    transform: translateX(370px);
+    transform: translateX(390px);
 }
 
 .todos-show {
-    transform: translateX(-370px)
+    transform: translateX(-390px)
+}
+
+.panel-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.panel-content > h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+.panel-content > .about-table {
+    width: 100%;
+    height: calc(100% - 2em - 6px);
+    border-collapse: collapse;
+}
+
+.panel-content > .about-table tr:hover {
+    background: rgba(100,100,100,0.4);
+    color: rgba(255,255,255,1);
+}
+
+.panel-content > .about-table td {
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+
+.panel-content > .about-table td.td-right {
+    text-align: right;
+}
+
+.panel-content > .about-table td > a {
+    font-size: 1.5em;
+    padding: 0 5px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+
+.panel-content > .about-table td > a:hover {
+    color: rgba(255,255,255,1);
+    text-decoration: underline;
 }
 
 /* ============================== END PANELS =============================== */
@@ -196,11 +243,11 @@ section {
 
 
 section #time {
-    font-size: 9em;
+    font-size: 14em;
 }
 
 section #time-period {
-    font-size: 6em;
+    font-size: 10em;
 }
 
 .greeting {
