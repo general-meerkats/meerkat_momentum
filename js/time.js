@@ -62,7 +62,7 @@ var time = {
 			timeOfDay = "Evening"
 
 		var message = `Good ${timeOfDay}, []]`;
-		return message
+		return message;
 
 	},
 
@@ -82,19 +82,17 @@ var time = {
 	},
 	init: function(){
 
-		this.displayTime();
-		if (this.isStandard){
-			this.displayPeriod();
+		time.displayTime();
+		if (time.isStandard){
+			time.displayPeriod();
 		}
-
-		
-		this.displayMessage();
+		time.displayMessage();
 
 	}
 
 }
 time.init();
-setInterval(function(){
-	time.init();
-}, 1000);
+setInterval(time.init,1000);
+
+
 
