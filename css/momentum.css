@@ -87,7 +87,7 @@ body {
 header {
     position: fixed;
     width: 100%;
-    height: 64px;
+    height: 60px;
     margin: 0;
     padding: 0;
     
@@ -101,7 +101,7 @@ header {
 }
 
 .brand {
-    height: 54px;
+    height: 50px;
     margin: 5px;
     z-index: 9999;
     cursor: pointer;
@@ -114,35 +114,42 @@ header {
 
 .panel {
     position: fixed;
-    width: 300px;
-    padding-left: 5px;
-    padding-right: 5px;
+    width: 360px;
+    padding: 10px 5px;
     background: rgba(0,0,0,.6);
-}
-
-.about {
-    top: 0;
-    left: -300px;
-    height: 100%;
-    padding-top: 65px;
-    transition: left 0.3s ease;
-}
-
-.todos {
-    bottom: 100px;
-    right: -300px;
-    height: 500px;
-    padding-top: 10px;
-    transition: right 0.3s ease;
     border-radius: 5px;
 }
 
-.about-show {
-    left: 0px;
+.about-panel {
+    top: 64px;
+    left: -360px;
+    height: calc(50% - 64px);
+    transition: transform 0.3s ease;
+}
+
+.todos-panel {
+    bottom: 70px;
+    right: -360px;
+    height: calc(100% - 134px);
+    padding-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.settings-panel {
+    bottom: 70px;
+    left: -360px;
+    height: calc(50% - 70px);
+    padding-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.about-show,
+.settings-show {
+    transform: translateX(370px);
 }
 
 .todos-show {
-    right: 10px;
+    transform: translateX(-370px)
 }
 
 /* ============================== END PANELS =============================== */
@@ -166,7 +173,7 @@ article {
     justify-content: center;
 
     /* push article beneath header */
-    margin-top: 54px;
+    margin-top: 60px;
 
     /* limit main content width and center */
     max-width: 1080px;
@@ -248,19 +255,20 @@ footer .quote {
 /* end quote feature */
 
 
-footer .image-credit,
+footer .footer-left,
 footer .footer-right {
+    cursor: pointer;
     box-sizing: border-box;
-    height: 100%;
     flex: 0 auto;
     align-self: flex-end;
-    padding: 1em;
+    padding: 0 1em 1em 1em;
     border-bottom: 2px solid transparent;
 }
 
 footer .footer-right {
-    cursor: pointer;
+    font-size: 1.2em;
     text-align: right;
+    color: rgba(255,255,255,0.75);
     
     /* prevent highlighting text */
     -webkit-user-select: none;
@@ -270,8 +278,20 @@ footer .footer-right {
     
 }
 
-footer .footer-right:hover {
+footer .footer-right:hover,
+footer .footer-left:hover {
+    color: rgba(255,255,255,1);
     border-bottom: 2px solid #fff;
+}
+
+footer #svg-gear {
+    width: 35px;
+    height: 35px;
+    fill: rgba(255,255,255,0.75);
+}
+
+footer #svg-gear:hover {
+    fill: rgba(255,255,255,1);
 }
 
 /* ============================== END FOOTER =============================== */

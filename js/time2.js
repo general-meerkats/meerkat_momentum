@@ -1,7 +1,7 @@
 /* jshint esversion:6 */
 /* globals $, console */
 
-var time = (function() {
+var time = (function($) {
     
     // init vars
     var isStandard = true,
@@ -94,7 +94,7 @@ var time = (function() {
     
     // render message to DOM
     function displayMessage() {
-        $('#message').text(getMessage());
+        $('#time-message').text(getMessage());
         // console.log(this.getMessage());  // for diag
     }
     
@@ -117,7 +117,7 @@ var time = (function() {
         init: init
     };
     
-}());
+}(jQuery));
 
 
 // fire on page load

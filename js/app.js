@@ -39,4 +39,14 @@ $(document).ready(function () {
         evt.stopPropagation();
     });
     
+    
+    // settings panel toggle show/hide
+    $('#settings-btn').on('click', function (evt) {
+        
+        // add / remove CSS class
+        $('#settings-panel').toggleClass('settings-show');
+        
+        evt.stopPropagation();
+    });
+    
 });
