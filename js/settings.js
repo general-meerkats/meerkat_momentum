@@ -14,16 +14,22 @@
             $saveSettings   = $settingsPanel.find('#save-settings-btn'),
             $clearSettings  = $settingsPanel.find('#clear-settings-btn');
         
-        console.log($userName);
+        
+        // set defaults
+        $clockFormat[0].checked = true;
+        $showWeather[0].checked = true;
+        $showTodos[0].checked = true;
         
         // populate userName input field if name in LS
-        if (LS.getData('momentum-settings').userName) {
+        if (LS.getData('momentum-settings') && LS.getData('momentum-settings').userName.length > 0) {
             $userName[0].value = LS.getData('momentum-settings').userName;
         }
+        
         
         // bind events
         $saveSettings.on('click', saveSettings);
         $clearSettings.on('click', clearSettings);
+        
         
         // handle save settings event
         function saveSettings(event) {
@@ -31,7 +37,7 @@
             event.preventDefault();
             
             LS.setData('momentum-settings', {
-                userName: $userName[0].value,
+                userName: $userName[0].value || undefined,
                 clockFormat: $clockFormat[0].checked,
                 showWeather: $showWeather[0].checked,
                 showTodos: $showTodos[0].checked
@@ -40,19 +46,33 @@
             // call time module to re-render DOM
             time.init();
             
+            // close settings panel
+            $('#settings-panel').removeClass('settings-show');
+            
             event.stopPropagation();
         }
+        
         
         // handle clear settings event
         function clearSettings(event) {
             
             event.preventDefault();
             
-            LS.clearData();
+            // erase 'momentum-storage'
+            LS.deleteData('momentum-settings');
             
-            // call time module to re-render DOM
+            // reset settings to defaults
+            $userName[0].value = 'What\'s your name?';
+            $clockFormat[0].checked = true;
+            $showWeather[0].checked = true;
+            $showTodos[0].checked = true;
+            
+            // call time module to re-render greeting
             time.init();
             
+            // close settings panel
+            $('#settings-panel').removeClass('settings-show');
+
             event.stopPropagation();
         }
 

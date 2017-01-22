@@ -20,6 +20,7 @@ $(document).ready(function () {
     
     getBackground();
     
+    // ========================== ABOUT PANEL STUFF ===========================
     
     // about panel toggle show/hide
     $('#meerkat-btn').on('click', function (evt) {
