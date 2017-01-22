@@ -57,7 +57,7 @@
             event.preventDefault();
             
             state = {
-                userName   : $userName[0].value || '',
+                userName   : $userName[0].value || undefined,
                 clockFormat: $clockFormat[0].checked,
                 showWeather: $showWeather[0].checked,
                 showTodos  : $showTodos[0].checked
@@ -65,14 +65,7 @@
             
             LS.setData('momentum-settings', state);
             
-            // call time module to re-render DOM
-            time.init();
-            
-            // re-load state
-            loadState();
-            
-            // toggle features
-            render();
+            updateDom();
             
             event.stopPropagation();
         }
@@ -92,18 +85,20 @@
             $showWeather[0].checked = true;
             $showTodos[0].checked   = true;
             
-            // call time module to re-render greeting
-            time.init();
-
-            loadState();
-            render();
+            updateDom();
 
             event.stopPropagation();
         }
         
         
-        // render DOM
-        function render() {
+        // render DOM elements
+        function updateDom() {
+            
+            // call time module to re-render time & greeting
+            time.init();
+            
+            // re-load state
+            loadState();
             
             // show/hide todos
             if (!state.showTodos) {
@@ -119,19 +114,13 @@
                 $('#weather-feature').css('display', 'block');
             }
             
-            // toggle clock format 12/24 hours
-            if (!state.clockFormat) {
-                time.isStandard = false;
-                time.init();
-            }
-            
             // close settings panel
             $('#settings-panel').removeClass('settings-show');
             
         }
         
         // fire on page load
-        render();
+        updateDom();
 
         
     }());
