@@ -11,8 +11,11 @@ var focus = {
 	close:function(){
 		var $form = $("form.focus").toggle();
 		var $form = $(".focus-list").toggle();
+		var val = LS.getData('focus-storage');
 		var objectStorage = {'val': val, 'isChecked': false};
+
 		LS.setData('focus-storage',objectStorage);
+		
 		$('.focus-list-message').removeClass("finished");
 	},
 	toggle:function(){
