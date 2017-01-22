@@ -303,6 +303,10 @@ section #time-period {
 }
 
 
+.focus-section{
+    margin-top:0px;
+    height:120px;
+}
 .focus{
     color:white;
     text-align: center;
@@ -312,12 +316,16 @@ section #time-period {
 }
 
 .ask-focus {
-    font-size: 3.5em;
+    font-size: 2.5em;
+
 }
 
 #focus-input {
+    padding-top:12px;
+    padding-bottom:12px;
+    font-weight: 700;
     width: 720px;
-    font-size: 3em;
+    font-size: 2em;
     background: rgba(255,255,255,0.1);
     border-bottom: 2px solid white;
     outline: 0;
@@ -338,7 +346,10 @@ section #time-period {
     animation: fadein 1s;
 }
 
-
+.focus-list > h4{
+    font-size:16px;
+    font-weight:400;
+}
 
 @keyframes fadein {
     from { opacity: 0; }
@@ -363,7 +374,7 @@ section #time-period {
     display: none;
 }
 
-.focus-list-container:hover  .checkbox, .focus-list-container:hover  .close{
+.focus-section:hover  .checkbox, .focus-section:hover  .close{
     display:inline-block;
 }
 
