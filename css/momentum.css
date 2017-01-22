@@ -214,7 +214,7 @@ header {
 
 .panel-content > .settings-table {
     width: 100%;
-    height: calc(100% - 120px);
+    height: calc(100% - 131px);
     border-collapse: collapse;
 }
 
@@ -230,7 +230,21 @@ header {
     text-align: right;
 }
 
+.panel-content > div .settings-btn {
+    font-size: 1.1em;
+    padding: 5px;
+    margin: 5px 10px;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    cursor: pointer;
+}
 
+.panel-content > div .settings-btn:hover {
+    border: 1px solid rgba(255,255,255,1);
+    color: #fff;
+}
 
 /* ============================== END PANELS =============================== */
 
