@@ -138,6 +138,7 @@ header {
     height: calc(100% - 134px);
     padding-top: 10px;
     transition: transform 0.3s ease;
+    overflow-x: hidden;
 }
 
 .settings-panel {
@@ -447,4 +448,49 @@ footer #svg-gear:hover {
     article {
         padding: 0 0 0.5em 0;
     }
+}
+
+/*TODO LIST*/
+#new-task {
+    background: rgba(255,255,255,0.1);
+    border-bottom: 1px solid white;
+    color: white;
+    text-align: center;
+    text-shadow: none;
+    outline: 0;
+    display: inline-block;
+    width: 314px;
+    margin-left: 19px;
+    font-size:19px;
+    height: 48px;
+
+}
+#taskList {
+    width: 350px;
+    margin: 17px auto;
+    font-size:19px;
+    font-weight:600;
+}
+
+ul li {
+    background-color:#17181D;
+    height:48px;
+    width:314px;
+    padding-left:12px;
+    margin:0 auto 10px auto;
+    line-height:48px;
+    list-style:none;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+ul li .check-task {
+    float: left;
+    margin: 0 10px 0 0;
+}
+
+ul li .delete-task {
+    float: right;
+    margin: 0 10px 0 0;
 }
