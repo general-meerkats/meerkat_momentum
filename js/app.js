@@ -11,9 +11,30 @@ $(document).ready(function () {
         $todosPanel = $('#todos-panel'),
         
         $settingsBtn   = $('#settings-btn'),
-        $settingsPanel = $('#settings-panel');
+        $settingsPanel = $('#settings-panel'),
         
+        $overlay = $('<div id="overlay"></div>');
     
+    
+    // ============================ OVERLAY STUFF =============================
+
+    // hide overlay before appending to DOM
+    $overlay.hide();
+    
+    $('body').append($overlay);
+    
+    $overlay.on('click', function (event) {
+        event.preventDefault();
+        
+        $overlay.hide();
+        $aboutPanel.removeClass('about-show');
+        $todosPanel.removeClass('todos-show');
+        $settingsPanel.removeClass('settings-show');
+        
+        event.stopPropagation();
+    });
+    
+
     // ========================== BACKGROUND STUFF ============================
     function getBackground() {
         
@@ -40,6 +61,9 @@ $(document).ready(function () {
         // add / remove CSS class
         $aboutPanel.toggleClass('about-show');
         
+        $overlay.show();
+
+                
         // hide other panels
         $todosPanel.removeClass('todos-show');
         $settingsPanel.removeClass('settings-show');
@@ -56,6 +80,9 @@ $(document).ready(function () {
         // add / remove CSS class
         $todosPanel.toggleClass('todos-show');
         
+        // toggle overlay
+        $overlay.toggle();
+        
         // hide other panels
         $aboutPanel.removeClass('about-show');
         $settingsPanel.removeClass('settings-show');
@@ -71,6 +98,9 @@ $(document).ready(function () {
         
         // add / remove CSS class
         $settingsPanel.toggleClass('settings-show');
+        
+        // toggle overlay
+        $overlay.toggle();
         
         // hide other panels
         $aboutPanel.removeClass('about-show');

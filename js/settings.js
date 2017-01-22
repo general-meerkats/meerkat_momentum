@@ -116,6 +116,7 @@
             
             // close settings panel
             $('#settings-panel').removeClass('settings-show');
+            $('#overlay').hide();
             
         }
         
