@@ -77,8 +77,8 @@ var time = (function($) {
             userName,
             namesIndex = Math.floor(Math.random() * defaultNames.length);
         
-        if (LS.getData('momentum-user')) {
-            userName = LS.getData('momentum-user');
+        if (LS.getData('momentum-settings')) {
+            userName = LS.getData('momentum-settings').userName;
         } else {
             userName = defaultNames[namesIndex];
         }
