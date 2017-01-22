@@ -33,7 +33,7 @@
                 };
             } else {
                 return {
-                    userName   : '',
+                    userName   : undefined,
                     clockFormat: true,
                     showWeather: true,
                     showTodos  : true
@@ -43,7 +43,9 @@
         
         
         // populate settings fields
-        $userName[0].value      = state.userName;
+        if (state.userName) {
+            $userName[0].value  = state.userName;
+        }
         $clockFormat[0].checked = state.clockFormat;
         $showWeather[0].checked = state.showWeather;
         $showTodos[0].checked   = state.showTodos;
@@ -54,24 +56,23 @@
             
             event.preventDefault();
             
-            LS.setData('momentum-settings', {
+            state = {
                 userName   : $userName[0].value || '',
                 clockFormat: $clockFormat[0].checked,
                 showWeather: $showWeather[0].checked,
                 showTodos  : $showTodos[0].checked
-            });
+            };
+            
+            LS.setData('momentum-settings', state);
             
             // call time module to re-render DOM
             time.init();
             
-            // toggle features
-            render();
-            
             // re-load state
             loadState();
             
-            // close settings panel
-            $('#settings-panel').removeClass('settings-show');
+            // toggle features
+            render();
             
             event.stopPropagation();
         }
@@ -93,31 +94,44 @@
             
             // call time module to re-render greeting
             time.init();
-            
-            // close settings panel
-            $('#settings-panel').removeClass('settings-show');
+
+            loadState();
+            render();
 
             event.stopPropagation();
         }
         
         
-        // update features show/hide
+        // render DOM
         function render() {
             
+            // show/hide todos
             if (!state.showTodos) {
                 $('#todos-btn').css('display', 'none');
+            } else {
+                $('#todos-btn').css('display', 'block');
             }
             
+            // show/hide weather
             if (!state.showWeather) {
-                $('#weather').css('display', 'none');
+                $('#weather-feature').css('display', 'none');
+            } else {
+                $('#weather-feature').css('display', 'block');
             }
             
+            // toggle clock format 12/24 hours
             if (!state.clockFormat) {
                 time.isStandard = false;
                 time.init();
             }
             
+            // close settings panel
+            $('#settings-panel').removeClass('settings-show');
+            
         }
+        
+        // fire on page load
+        render();
 
         
     }());
