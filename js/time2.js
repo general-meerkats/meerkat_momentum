@@ -74,23 +74,24 @@ var time = (function($) {
     function getMessage() {
         var hour = getHours(),
             timeOfDay,
-            userName;
+            userName,
+            namesIndex = Math.floor(Math.random() * defaultNames.length);
         
         if (LS.getData('momentum-user')) {
             userName = LS.getData('momentum-user');
         } else {
-            
+            userName = defaultNames[namesIndex];
         }
         
         if (hour < 12) {
             timeOfDay = "Morning";
-        } else if (hour >= 12 || hour > 17) {
+        } else if (hour >= 12 && hour < 17) {
             timeOfDay = "Afternoon";
         } else {
             timeOfDay = "Evening";
         }
 
-        return `Good ${timeOfDay}, []`;
+        return `Good ${timeOfDay}, ${userName}.`;
     }
     
     
