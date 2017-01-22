@@ -12,25 +12,41 @@
             $showWeather    = $settingsPanel.find('#show-weather-chkbx'),
             $showTodos      = $settingsPanel.find('#show-todo-chkbx'),
             $saveSettings   = $settingsPanel.find('#save-settings-btn'),
-            $clearSettings  = $settingsPanel.find('#clear-settings-btn');
-        
-        
-        // set defaults
-        $clockFormat[0].checked = true;
-        $showWeather[0].checked = true;
-        $showTodos[0].checked   = true;
-        
-        
-        // populate userName input field if name in LS
-        if (LS.getData('momentum-settings') &&
-            LS.getData('momentum-settings').userName.length > 0) {
-            $userName[0].value = LS.getData('momentum-settings').userName;
-        }
+            $clearSettings  = $settingsPanel.find('#clear-settings-btn'),
+            
+            state = loadState();
         
         
         // bind events
-        $saveSettings.on('click', saveSettings);
+        $saveSettings.on('click',  saveSettings);
         $clearSettings.on('click', clearSettings);
+        
+        
+        // load state
+        function loadState() {
+            if (LS.getData('momentum-settings')) {
+                return {
+                    userName   : LS.getData('momentum-settings').userName,
+                    clockFormat: LS.getData('momentum-settings').clockFormat,
+                    showWeather: LS.getData('momentum-settings').showWeather,
+                    showTodos  : LS.getData('momentum-settings').showTodos
+                };
+            } else {
+                return {
+                    userName   : '',
+                    clockFormat: true,
+                    showWeather: true,
+                    showTodos  : true
+                };
+            }
+        }
+        
+        
+        // populate settings fields
+        $userName[0].value      = state.userName;
+        $clockFormat[0].checked = state.clockFormat;
+        $showWeather[0].checked = state.showWeather;
+        $showTodos[0].checked   = state.showTodos;
         
         
         // handle save settings event
@@ -39,7 +55,7 @@
             event.preventDefault();
             
             LS.setData('momentum-settings', {
-                userName   : $userName[0].value || undefined,
+                userName   : $userName[0].value || '',
                 clockFormat: $clockFormat[0].checked,
                 showWeather: $showWeather[0].checked,
                 showTodos  : $showTodos[0].checked
@@ -47,6 +63,12 @@
             
             // call time module to re-render DOM
             time.init();
+            
+            // toggle features
+            render();
+            
+            // re-load state
+            loadState();
             
             // close settings panel
             $('#settings-panel').removeClass('settings-show');
@@ -76,6 +98,25 @@
             $('#settings-panel').removeClass('settings-show');
 
             event.stopPropagation();
+        }
+        
+        
+        // update features show/hide
+        function render() {
+            
+            if (!state.showTodos) {
+                $('#todos-btn').css('display', 'none');
+            }
+            
+            if (!state.showWeather) {
+                $('#weather').css('display', 'none');
+            }
+            
+            if (!state.clockFormat) {
+                time.isStandard = false;
+                time.init();
+            }
+            
         }
 
         
