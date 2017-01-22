@@ -6,10 +6,11 @@ $(document).ready(function () {
     // mock random background fetch
     function getBackground() {
         
-        var img_array = [
-            'static_background.jpg',
-            '13.jpg'
-        ];
+        var index,
+            img_array = [
+                'static_background.jpg',
+                '13.jpg'
+            ];
         
         index = Math.floor(Math.random() * img_array.length);
         $('.splash')

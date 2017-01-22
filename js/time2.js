@@ -5,7 +5,16 @@ var time = (function($) {
     
     // init vars
     var isStandard = true,
-        tehDate;
+        tehDate,
+        defaultNames = [
+            'pal',
+            'sexy',
+            'handsome',
+            'smarty pants',
+            'good looking',
+            'classy',
+            'human shield'
+        ];
     
 
     // generate new date and assign to 'tehDate'
@@ -64,7 +73,14 @@ var time = (function($) {
     // generate greeting message
     function getMessage() {
         var hour = getHours(),
-            timeOfDay;
+            timeOfDay,
+            userName;
+        
+        if (LS.getData('momentum-user')) {
+            userName = LS.getData('momentum-user');
+        } else {
+            
+        }
         
         if (hour < 12) {
             timeOfDay = "Morning";

@@ -101,10 +101,15 @@ header {
 }
 
 .brand {
-    height: 50px;
-    margin: 5px;
+    height: 54px;
+    padding: 5px 10px 0 10px;
     z-index: 9999;
     cursor: pointer;
+    border-top: 2px solid transparent;
+}
+
+.brand:hover {
+    border-top: 2px solid white;
 }
 
 
@@ -116,7 +121,7 @@ header {
     position: fixed;
     width: 380px;
     padding: 10px;
-    background: rgba(0,0,0,.6);
+    background: rgba(0,0,0,.9);
     border-radius: 5px;
 }
 
@@ -160,13 +165,12 @@ header {
 .panel-content > h1 {
     text-align: center;
     font-size: 2em;
-    margin-bottom: 5px;
     border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
 .panel-content > .about-table {
     width: 100%;
-    height: calc(100% - 2em - 6px);
+    height: calc(100% - 35px);
     border-collapse: collapse;
 }
 
@@ -196,8 +200,37 @@ header {
 
 .panel-content > .about-table td > a:hover {
     color: rgba(255,255,255,1);
-    text-decoration: underline;
 }
+
+.panel-content > form > .settings-name-input {
+    width: calc(100% - 20px);
+    margin: 10px;
+    font-size: 1.3em;
+    border: none;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 10px 5px;
+}
+
+.panel-content > .settings-table {
+    width: 100%;
+    height: calc(100% - 120px);
+    border-collapse: collapse;
+}
+
+.panel-content > .settings-table td {
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 0 10px;
+    vertical-align: middle;
+}
+
+.panel-content > .settings-table td.td-right {
+    text-align: right;
+}
+
+
 
 /* ============================== END PANELS =============================== */
 

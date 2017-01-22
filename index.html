@@ -157,7 +157,34 @@
     
     <!-- ========================= SETTINGS PANEL ========================= -->
     <aside id="settings-panel" class="panel settings-panel">
-        Settings go here:
+        <div class="panel-content">
+            <h1>Settings</h1>
+            <form>
+                <input id="name-input" class="settings-name-input"
+                type="text" placeholder="Your name here..." />
+            </form>
+            
+            <table class="settings-table">
+                <tr>
+                    <td>12-Hour Clock</td>
+                    <td class="td-right">
+                        <input id="12-hr-clock-chkbx" type="checkbox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Show Weather</td>
+                    <td class="td-right">
+                        <input id="show-weather-chkbx" type="checkbox" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Show To-Dos</td>
+                    <td class="td-right">
+                        <input id="show-todo-chkbx" type="checkbox" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </aside>
     
     <!-- ========================== TODOS PANEL =========================== -->
