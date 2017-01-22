@@ -3,7 +3,18 @@
 
 $(document).ready(function () {
     
-    // mock random background fetch
+    // cache DOM elements
+    var $meerkatBtn = $('#meerkat-btn'),
+        $aboutPanel = $('#about-panel'),
+        
+        $todosBtn   = $('#todos-btn'),
+        $todosPanel = $('#todos-panel'),
+        
+        $settingsBtn   = $('#settings-btn'),
+        $settingsPanel = $('#settings-panel');
+        
+    
+    // ========================== BACKGROUND STUFF ============================
     function getBackground() {
         
         var index,
@@ -20,13 +31,18 @@ $(document).ready(function () {
     
     getBackground();
     
+    
     // ========================== ABOUT PANEL STUFF ===========================
     
     // about panel toggle show/hide
-    $('#meerkat-btn').on('click', function (evt) {
+    $meerkatBtn.on('click', function (evt) {
         
         // add / remove CSS class
-        $('#about-panel').toggleClass('about-show');
+        $aboutPanel.toggleClass('about-show');
+        
+        // hide other panels
+        $todosPanel.removeClass('todos-show');
+        $settingsPanel.removeClass('settings-show');
         
         evt.stopPropagation();
     });
@@ -35,10 +51,14 @@ $(document).ready(function () {
     // ========================== TODO PANEL STUFF ============================
     
     // todo panel toggle show/hide
-    $('#todos-btn').on('click', function (evt) {
+    $todosBtn.on('click', function (evt) {
         
         // add / remove CSS class
-        $('#todos-panel').toggleClass('todos-show');
+        $todosPanel.toggleClass('todos-show');
+        
+        // hide other panels
+        $aboutPanel.removeClass('about-show');
+        $settingsPanel.removeClass('settings-show');
         
         evt.stopPropagation();
     });
@@ -47,10 +67,14 @@ $(document).ready(function () {
     // ========================= SETTINGS PANEL STUFF =========================
     
     // settings panel toggle show/hide
-    $('#settings-btn').on('click', function (evt) {
+    $settingsBtn.on('click', function (evt) {
         
         // add / remove CSS class
-        $('#settings-panel').toggleClass('settings-show');
+        $settingsPanel.toggleClass('settings-show');
+        
+        // hide other panels
+        $aboutPanel.removeClass('about-show');
+        $todosPanel.removeClass('todos-show');
         
         evt.stopPropagation();
     });
