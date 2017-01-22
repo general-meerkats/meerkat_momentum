@@ -4,7 +4,7 @@
 var time = (function($) {
     
     // init vars
-    var tehDate,
+    var theDate,
         defaultNames = [
             'pal',
             'sexy',
@@ -16,36 +16,35 @@ var time = (function($) {
         ];
     
 
-    // set 'isStandard' to LS or default
+    // check local storage for clock format,
+    // returns LS value if present, or true if missing
     function checkStandard() {
-        if (LS.getData('momentum-settings')) {
-            return LS.getData('momentum-settings').clockFormat;
-        } else {
-            return true;
-        }
+        var storage = LS.getData('momentum-settings');
+        return (storage) ? storage.clockFormat : true;
     }
     
 
-    // generate new date and assign to 'tehDate'
+    // generate new date and assign to 'theDate'
     function createDate() {
-        tehDate = new Date();
+        theDate = new Date();
     }
     
         
-    // get hour value from tehDate
+    // get hour value from theDate
     function getHours() {
-        return tehDate.getHours();
+        return theDate.getHours();
     }
     
     
-    // get minutes value from tehDate
+    // get minutes value from theDate
     function getMinutes() {
-        return tehDate.getMinutes();
+        return theDate.getMinutes();
     }
     
     
     // generate hours:minutes time string
     function getTime() {
+        
         var hours,
             minutes;
         
@@ -73,18 +72,20 @@ var time = (function($) {
     }
     
     
+    // find and set userName
+    function setUserName() {
+        var namesIndex = Math.floor(Math.random() * defaultNames.length),
+            storage = LS.getData('momentum-settings');
+        
+        return (storage && storage.userName !== undefined) ? storage.userName : defaultNames[namesIndex];
+    }
+    
+    
     // generate greeting message
     function getMessage() {
         var hour = getHours(),
             timeOfDay,
-            userName,
-            namesIndex = Math.floor(Math.random() * defaultNames.length);
-        
-        if (LS.getData('momentum-settings')) {
-            userName = LS.getData('momentum-settings').userName;
-        } else {
-            userName = defaultNames[namesIndex];
-        }
+            userName = setUserName();
         
         if (hour < 12) {
             timeOfDay = "Morning";
@@ -101,14 +102,17 @@ var time = (function($) {
     // render time to DOM
     function displayTime() {
         $('#time').text(getTime());
-        // console.log(getTime());  // for diag
     }
     
     
     // render period to DOM
     function displayPeriod() {
-        $('#time-period').text(getPeriod());
-        // console.log(this.getPeriod());  // for diag
+        
+        if (checkStandard()) {
+            $('#time-period').text(getPeriod());
+        } else {
+            $('#time-period').empty();
+        }
     }
     
     
@@ -121,14 +125,9 @@ var time = (function($) {
     
     // call everything
     function init() {
-        
         createDate();
         displayTime();
-
-        if (checkStandard()) {
-            displayPeriod();
-        }
-        
+        displayPeriod();
         displayMessage();
     }
     
@@ -145,5 +144,5 @@ var time = (function($) {
 time.init();
 
 
-// fire every 30 seconds
+// re-fire every 30 seconds
 setInterval(time.init, 30000);
