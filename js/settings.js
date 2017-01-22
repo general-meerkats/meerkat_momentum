@@ -18,10 +18,12 @@
         // set defaults
         $clockFormat[0].checked = true;
         $showWeather[0].checked = true;
-        $showTodos[0].checked = true;
+        $showTodos[0].checked   = true;
+        
         
         // populate userName input field if name in LS
-        if (LS.getData('momentum-settings') && LS.getData('momentum-settings').userName.length > 0) {
+        if (LS.getData('momentum-settings') &&
+            LS.getData('momentum-settings').userName.length > 0) {
             $userName[0].value = LS.getData('momentum-settings').userName;
         }
         
@@ -37,10 +39,10 @@
             event.preventDefault();
             
             LS.setData('momentum-settings', {
-                userName: $userName[0].value || undefined,
+                userName   : $userName[0].value || undefined,
                 clockFormat: $clockFormat[0].checked,
                 showWeather: $showWeather[0].checked,
-                showTodos: $showTodos[0].checked
+                showTodos  : $showTodos[0].checked
             });
             
             // call time module to re-render DOM
@@ -62,10 +64,10 @@
             LS.deleteData('momentum-settings');
             
             // reset settings to defaults
-            $userName[0].value = 'What\'s your name?';
+            $userName[0].value      = '';
             $clockFormat[0].checked = true;
             $showWeather[0].checked = true;
-            $showTodos[0].checked = true;
+            $showTodos[0].checked   = true;
             
             // call time module to re-render greeting
             time.init();
