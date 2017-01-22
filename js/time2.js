@@ -1,11 +1,10 @@
 /* jshint esversion:6 */
-/* globals $, console */
+/* globals $, console, LS */
 
 var time = (function($) {
     
     // init vars
-    var isStandard = true,
-        tehDate,
+    var tehDate,
         defaultNames = [
             'pal',
             'sexy',
@@ -17,18 +16,22 @@ var time = (function($) {
         ];
     
 
+    // set 'isStandard' to LS or default
+    function checkStandard() {
+        if (LS.getData('momentum-settings')) {
+            return LS.getData('momentum-settings').clockFormat;
+        } else {
+            return true;
+        }
+    }
+    
+
     // generate new date and assign to 'tehDate'
     function createDate() {
         tehDate = new Date();
     }
     
-    
-    // 12-hr vs 24-hr clock
-    function toggleStandard() {
-        isStandard = !isStandard;
-    }
-    
-    
+        
     // get hour value from tehDate
     function getHours() {
         return tehDate.getHours();
@@ -46,7 +49,7 @@ var time = (function($) {
         var hours,
             minutes;
         
-        if (isStandard) {
+        if (checkStandard()) {
             if ((getHours() >= 13) && (getHours() < 24)) {
                 hours = getHours() % 12;
             } else if (getHours() === 0) {
@@ -118,10 +121,11 @@ var time = (function($) {
     
     // call everything
     function init() {
+        
         createDate();
         displayTime();
 
-        if (isStandard) {
+        if (checkStandard()) {
             displayPeriod();
         }
         
