@@ -287,22 +287,75 @@ section #time-period {
     font-size: 4em;
 }
 
-.ask-focus {
+
+.focus{
+    color:white;
+    text-align: center;
     display: inline-block;
+    width: 720px;
+    text-shadow: none;
+}
+
+.ask-focus {
     font-size: 3.5em;
-    width: 720px
 }
 
 #focus-input {
     width: 720px;
     font-size: 3em;
-    color: white;
     background: rgba(255,255,255,0.1);
-    text-align: center;
     border-bottom: 2px solid white;
     outline: 0;
-    text-shadow: none;
 }
+
+.focus-list{
+    height:100px;
+    padding:1em;
+    font-size: 2em;
+    font-weight:700;
+    display: none;
+    line-height: 1.5;
+
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s; /* Firefox < 16 */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera < 12.1 */
+    animation: fadein 1s;
+}
+
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.focus-list-message{
+    padding:0px 25px 0px 25px;
+}
+.checkbox{
+    width:15px;
+    height:15px;
+    font-size: 20px;
+    display: none;
+}
+
+.close{
+    position: relative;
+    bottom:4px;
+    width:15px;
+    height:15px;
+    font-size: 12px;
+    display: none;
+}
+
+.focus-list-container:hover  .checkbox, .focus-list-container:hover  .close{
+    display:inline-block;
+}
+
+.finished{
+    text-decoration: line-through;
+}
+
 
 /* =========================== END MAIN CONTENT ============================ */
 
