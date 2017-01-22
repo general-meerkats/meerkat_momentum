@@ -32,6 +32,8 @@ $(document).ready(function () {
     });
     
     
+    // ========================== TODO PANEL STUFF ============================
+    
     // todo panel toggle show/hide
     $('#todos-btn').on('click', function (evt) {
         
@@ -42,6 +44,8 @@ $(document).ready(function () {
     });
     
     
+    // ========================= SETTINGS PANEL STUFF =========================
+    
     // settings panel toggle show/hide
     $('#settings-btn').on('click', function (evt) {
         
@@ -50,5 +54,8 @@ $(document).ready(function () {
         
         evt.stopPropagation();
     });
+    
+    // ============================ WEATHER STUFF =============================
+
     
 });
