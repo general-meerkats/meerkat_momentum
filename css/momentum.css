@@ -103,7 +103,6 @@ header {
 .brand {
     height: 54px;
     padding: 5px 10px 0 10px;
-    z-index: 9999;
     cursor: pointer;
     border-top: 2px solid transparent;
 }
@@ -125,6 +124,7 @@ header {
     height: 100%;
     background: #000;
     opacity: 0.5;
+    z-index: 998;
 }
 
 .panel {
@@ -226,7 +226,8 @@ header {
 
 .panel-content > .settings-table {
     width: 100%;
-    height: calc(100% - 131px);
+    height: calc(100% - 135px);
+    max-height: 200px;
     border-collapse: collapse;
 }
 
@@ -247,7 +248,7 @@ header {
     padding: 5px;
     margin: 5px 10px;
     color: rgba(255,255,255,0.75);
-    background: rgba(255,255,255,0.2);
+    background: none;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 2px;
     cursor: pointer;
@@ -255,7 +256,31 @@ header {
 
 .panel-content > div .settings-btn:hover {
     border: 1px solid rgba(255,255,255,1);
+    background: rgba(255,255,255,0.2);
     color: #fff;
+    box-shadow: 0 0 10px 2px rgba(100,100,200,0.7);
+}
+
+input[type=checkbox] {
+    -webkit-appearance: button;
+    border: 2px solid rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.75);
+    background-color: #000;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    outline: 0;
+}
+
+input[type=checkbox]:checked {
+    background-color: rgba(255, 179, 37, 0.78);
+    border: 2px solid rgba(255,255,255,1);
+    
+}
+
+input[type=checkbox]:hover {
+    border: 2px solid rgba(255,255,255,1);
+    box-shadow: 0 0 10px 2px rgba(100,100,200,0.7);
 }
 
 /* ============================== END PANELS =============================== */
