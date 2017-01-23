@@ -23,11 +23,15 @@
                     // Date query param to make each request unique.
                     // this hack disables browser caching of results.
                     'processdate': (new Date()).getTime()
+                },
+                inspectResponse: function (response) {
+                    console.log(response[0]);
+                    console.log(response[0].content.length);
                 }
             };
 
             // do the work
-            $.getJSON(api.endpoint, api.params)
+            $.getJSON(api.endpoint, api.params, api.inspectResponse)
                 .then(renderQuote)
                 .catch(handleError);
         }
@@ -51,10 +55,13 @@
 
         // render
         function renderQuote(response) {
-            
-            var quote = clean(response[0].content)
-            $quoteFeature.html(quote);
             // console.log(response);  // for diag
+            var quote = clean(response[0].content)
+            $quoteFeature
+                .attr('href', response[0].link)
+                .attr('target', '_blank')
+                .html(quote);
+            
         }
 
         // handle error
