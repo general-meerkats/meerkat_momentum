@@ -73,7 +73,7 @@ var time = (function($) {
     
     
     // find and set userName
-    function setUserName() {
+    function UserName() {
         var namesIndex = Math.floor(Math.random() * defaultNames.length),
             storage = LS.getData('momentum-settings');
         
@@ -132,17 +132,22 @@ var time = (function($) {
     }
     
     
+
+    function updateMe() {
+        var userName = setUserName();
+        console.log("dewdis");
+    }
+
     // export public methods
     return {
-        init: init
+        init: init,
+        updateMe: updateMe
     };
     
 }(jQuery));
 
-
 // fire on page load
 time.init();
 
-
 // re-fire every 30 seconds
-setInterval(time.init, 30000);
+setInterval(time.updateMe, 30000);
