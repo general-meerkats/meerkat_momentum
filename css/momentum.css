@@ -240,7 +240,8 @@ header {
 }
 
 .panel-content > .settings-table td.td-right {
-    text-align: right;
+    width: 20px;
+    text-align: left;
 }
 
 .panel-content > div .settings-btn {
@@ -261,26 +262,26 @@ header {
     box-shadow: 0 0 10px 2px rgba(100,100,200,0.7);
 }
 
+/* custom settings checkboxes */
 input[type=checkbox] {
-    -webkit-appearance: button;
-    border: 2px solid rgba(255,255,255,0.75);
+    display:none;   /* hide the actual checkbox */
+}
+
+input[type=checkbox] + label:before {
+    cursor: pointer;
+    font-family: FontAwesome;
     color: rgba(255,255,255,0.75);
-    background-color: #000;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    outline: 0;
+    content: "\f096";  /* unchecked icon */
 }
 
-input[type=checkbox]:checked {
-    background-color: rgba(255, 179, 37, 0.78);
-    border: 2px solid rgba(255,255,255,1);
-    
+input[type=checkbox] + label:hover:before {
+    color: rgba(255,255,255,1);
 }
 
-input[type=checkbox]:hover {
-    border: 2px solid rgba(255,255,255,1);
-    box-shadow: 0 0 10px 2px rgba(100,100,200,0.7);
+
+input[type=checkbox]:checked + label:before {
+    content: "\f046";  /* checked icon */
+    color: rgba(255,255,255,1);
 }
 
 /* ============================== END PANELS =============================== */
