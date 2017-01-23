@@ -9,6 +9,8 @@ var focus = {
 		$('.close').on('click', this.close.bind(this));
 		$( document ).ready(this.getList.bind(this));
 		$( '#new-task' ).on('keyup', this.add.bind(this));
+		$( document ).on('click', '.delete-task', this.removeTask);
+		$( document ).on('click', '.check-task', this.toggleTask);
 	},
 	close:function(){
 		var $form = $("form.focus").toggle();
@@ -94,12 +96,58 @@ var focus = {
 		if (!todoList) return;
 
 		todoList.forEach(function (item) {
-			var liItem = "<li id='" + item.id + "'>" +
+
+			var liItemChecked = "<li class=\"finished\" id='" + item.id + "'>" +
+			    "<span class=\"check-task\"><i class=\"fa fa-check-square-o\" aria-hidden=\"true\"></i></span>" + 
+			    item.task + 
+			    "<span class=\"delete-task\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span></li>";
+
+			var liItemUnchecked = "<li id='" + item.id + "'>" +
 			    "<span class=\"check-task\"><i class=\"fa fa-square-o\" aria-hidden=\"true\"></i></span>" + 
 			    item.task + 
 			    "<span class=\"delete-task\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span></li>";
-			$( '#taskList' ).append(liItem);
+
+			if (item.isChecked) {
+				$( '#taskList' ).append(liItemChecked);
+			} else {
+				$( '#taskList' ).append(liItemUnchecked);
+			}
 		});
+	},
+	removeTask: function(e) {
+		var todoList = LS.getData('todo-list');
+		var taskSelectedElement = $(e.target).parent().parent();
+		var taskSelectedId = taskSelectedElement.attr('id');
+
+		var index = todoList.findIndex(function(x) {
+			return x.id == taskSelectedId;
+		});
+
+		todoList.splice(index, 1);
+		taskSelectedElement.remove();
+		LS.setData('todo-list', todoList);
+	},
+	toggleTask: function(e) {
+		var todoList = LS.getData('todo-list');
+		var $target = $(e.target);
+		var $taskSelected = $target.parent().parent();
+		var taskId = $taskSelected.attr('id');
+
+		var index = todoList.findIndex(function(x) {
+			return x.id == taskId;
+		});
+
+		todoList[index].isChecked = !todoList[index].isChecked;
+
+		if (todoList[index].isChecked) {
+			$target.removeClass('fa-square-o').addClass('fa-check-square-o');
+			$taskSelected.addClass('finished');
+		} else {
+			$target.removeClass('fa-check-square-o').addClass('fa-square-o');
+			$taskSelected.removeClass('finished')
+		}
+
+		LS.setData('todo-list', todoList);
 	}
 }
 focus.bindEvents();
