@@ -4,25 +4,25 @@ var ENTER_KEY = 13;
 $("form").submit(function() { return false; });
 var focus = {
 	bindEvents:function(){
-		$('#focus-input').on('keyup', this.create.bind(this));
-		$('.checkbox').on('click', this.toggle.bind(this));
-		$('.close').on('click', this.close.bind(this));
+		$('#focus-input').on('keyup', this.createDaily.bind(this));
+		$('.checkbox').on('click', this.toggleDaily.bind(this));
+		$('.close').on('click', this.closeDaily.bind(this));
 		$( document ).ready(this.getList.bind(this));
 		$( '#new-task' ).on('keyup', this.add.bind(this));
 		$( document ).on('click', '.delete-task', this.removeTask);
 		$( document ).on('click', '.check-task', this.toggleTask);
 	},
-	close:function(){
+	closeDaily:function(){
 		var $form = $("form.focus").toggle();
 		var $form = $(".focus-list").toggle();
 		var val = LS.getData('focus-storage');
-		var objectStorage = {'val': val, 'isChecked': false};
+		var objectStorage = {'val': null, 'isChecked': false};
 
 		LS.setData('focus-storage',objectStorage);
 		
 		$('.focus-list-message').removeClass("finished");
 	},
-	toggle:function(){
+	toggleDaily:function(){
 		var focus = LS.getData('focus-storage');
 
 		if(!focus.isChecked){
@@ -39,7 +39,7 @@ var focus = {
 		var newStorage = {'val': focus.val, 'isChecked': !focus.isChecked};
 		LS.setData("focus-storage", newStorage);
 	},
-	create: function(e){
+	createDaily: function(e){
 		var $input = $(e.target);
 		var val = $input.val().trim();
 
@@ -48,16 +48,21 @@ var focus = {
 		}
 		var objectStorage = {'val': val, 'isChecked': false};
 		LS.setData('focus-storage',objectStorage);
-		console.log(LS.getData('focus-storage'));
 		$input.val('');
 		this.render();
 
 	},
 	render: function(){
 		var listMessage = LS.getData('focus-storage');
-		$('.focus-list-message').text(listMessage.val);	
-		var $form = $("form.focus").toggle();
-		var $form = $(".focus-list").toggle();
+		if(listMessage.val !== null){
+			$('.focus-list-message').text(listMessage.val);	
+			var $form = $("form.focus").toggle();
+			var $form = $(".focus-list").toggle();
+		}
+
+		if(listMessage.isChecked === true){
+			$('.focus-list-message').addClass("finished");
+		}
 	},
 	// TO-DO LIST
 	add: function(e) {
@@ -148,6 +153,11 @@ var focus = {
 		}
 
 		LS.setData('todo-list', todoList);
+	},
+
+	init: function(){
+		this.bindEvents();
+		this.render();
 	}
 }
-focus.bindEvents();
+focus.init();
