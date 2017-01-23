@@ -73,7 +73,7 @@ var time = (function($) {
     
     
     // find and set userName
-    function UserName() {
+    function getUserName() {
         var namesIndex = Math.floor(Math.random() * defaultNames.length),
             storage = LS.getData('momentum-settings');
         
@@ -82,20 +82,19 @@ var time = (function($) {
     
     
     // generate greeting message
-    function getMessage() {
+    function getMessage(userName) {
         var hour = getHours(),
-            timeOfDay,
-            userName = setUserName();
-        
+            timeOfDay
+
         if (hour < 12) {
-            timeOfDay = "Morning";
+            timeOfDay = "morning";
         } else if (hour >= 12 && hour < 17) {
-            timeOfDay = "Afternoon";
+            timeOfDay = "afternoon";
         } else {
-            timeOfDay = "Evening";
+            timeOfDay = "evening";
         }
 
-        return `Good ${timeOfDay}, ${userName}.`;
+        return `Good ${timeOfDay}, `+userName+`.`;
     }
     
     
@@ -117,37 +116,43 @@ var time = (function($) {
     
     
     // render message to DOM
-    function displayMessage() {
-        $('#time-message').text(getMessage());
+    function displayMessage(userName) {
+        $('#time-message').text(getMessage(userName));
         // console.log(this.getMessage());  // for diag
     }
     
     
     // call everything
     function init() {
+        userName = getUserName();
         createDate();
         displayTime();
         displayPeriod();
-        displayMessage();
+        displayMessage(userName);
+        return userName;
     }
     
     
 
-    function updateMe() {
-        var userName = setUserName();
+    function updateMe(userName) {
         console.log("dewdis");
+        createDate();
+        displayTime();
+        displayPeriod();
+        displayMessage(userName);
     }
 
-    // export public methods
+    // export public methods and name variable
     return {
         init: init,
+        userName: init(),
         updateMe: updateMe
     };
     
 }(jQuery));
 
-// fire on page load
-time.init();
+// fire on page load, then save name
+userName = time.userName;
 
-// re-fire every 30 seconds
-setInterval(time.updateMe, 30000);
+// re-fire every 20 seconds
+setInterval(function() {time.updateMe(userName)}, 20000);
