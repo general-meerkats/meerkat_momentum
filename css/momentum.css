@@ -356,6 +356,10 @@ section #time-period {
 }
 
 
+.focus-list-container:hover, .fa-square-o:hover, .fa-check-square-o:hover,
+.fa-times:hover{
+    cursor: pointer;
+}
 .focus-section{
     margin-top:0px;
     height:120px;

@@ -56,7 +56,7 @@ var focus = {
 
 		var dailyFocus = LS.getData('focus-storage');
 
-		if(dailyFocus.val === null || !dailyFocus){
+		if(dailyFocus === null || dailyFocus.val === null || !dailyFocus){
 			$('#focus-input').css('display','block');
 			$('.focus-list').css('display','none');
 			return;
