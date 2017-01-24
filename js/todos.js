@@ -13,31 +13,19 @@ var focus = {
 		$( document ).on('click', '.check-task', this.toggleTask);
 	},
 	closeDaily:function(){
-		var $form = $("form.focus").toggle();
-		var $form = $(".focus-list").toggle();
 		var val = LS.getData('focus-storage');
 		var objectStorage = {'val': null, 'isChecked': false};
-
 		LS.setData('focus-storage',objectStorage);
+
+		this.render();
 		
-		$('.focus-list-message').removeClass("finished");
+		
 	},
 	toggleDaily:function(){
 		var focus = LS.getData('focus-storage');
-
-		if(!focus.isChecked){
-			$('.focus-list-message').addClass("finished");
-			$('.checkbox').html('<i class="fa fa-check-square-o" aria-hidden="true"></i>');
-			$('.close').html('<i class="fa fa-plus" aria-hidden="true"></i>');
-		}
-		else{
-			$('.focus-list-message').removeClass("finished");
-			$('.checkbox').html('<i class="fa fa-square-o" aria-hidden="true"></i>');
-			$('.close').html('<i class="fa fa-times" aria-hidden="true"></i>');
-		}
-
 		var newStorage = {'val': focus.val, 'isChecked': !focus.isChecked};
 		LS.setData("focus-storage", newStorage);
+		this.render();
 	},
 	createDaily: function(e){
 		var $input = $(e.target);
@@ -53,16 +41,32 @@ var focus = {
 
 	},
 	render: function(){
-		var listMessage = LS.getData('focus-storage');
-		if(listMessage.val !== null){
-			$('.focus-list-message').text(listMessage.val);	
-			var $form = $("form.focus").toggle();
-			var $form = $(".focus-list").toggle();
+		var dailyFocus = LS.getData('focus-storage');
+
+		if(dailyFocus.val === null || dailyFocus === null){
+			$('#focus-input').css('display','block');
+			$('.focus-list').css('display','none');
+			return;
+		}
+		else{
+			$('#focus-input').css('display','none');
+			$('.focus-list').css('display','block');
+			$('.focus-list-message').html(dailyFocus.val);
 		}
 
-		if(listMessage.isChecked === true){
-			$('.focus-list-message').addClass("finished");
+		if(dailyFocus.isChecked){
+			$('.focus-list-message').addClass('finished');
+			$('.checkbox').html('<i class="fa fa-check-square-o" aria-hidden="true"></i>');
+			$('.close').html('<i class="fa fa-plus" aria-hidden="true"></i>');
 		}
+		else{
+			$('.focus-list-message').removeClass('finished');
+			$('.checkbox').html('<i class="fa fa-square-o" aria-hidden="true"></i>');
+			$('.close').html('<i class="fa fa-times" aria-hidden="true"></i>');
+		}
+
+
+
 	},
 	// TO-DO LIST
 	add: function(e) {
