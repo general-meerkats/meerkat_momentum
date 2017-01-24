@@ -115,6 +115,7 @@ div#weather-feature{
 }
 img#icon_img {
     margin-bottom: -1em;
+    padding-left: 3em;
 }
 div#weather-feature p {
     line-height: 1em;
