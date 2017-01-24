@@ -29,8 +29,8 @@ function success(position) {
 			weather.find(function(icons){
 				icons == icon ? $('#icon_img').attr('src', "./assets/SVG/"+icon+".svg") : console.log(false)
 			});			
-			$('#weather-feature').append('<p>'+data.currently.temperature +'</p>');
-			$('#weather-feature').append('<p>'+data.timezone +'</p>');
+			$('#weather-feature').append('<p class="temp">'+Math.round(data.currently.temperature) +' &degF</p>');
+			$('#weather-feature').append('<p class="location">'+data.timezone +'</p>');
 			
 		}
 	})
