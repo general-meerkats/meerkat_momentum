@@ -16,9 +16,17 @@ if ("geolocation" in navigator) {
 function success(position) {
 	var latitude  = position.coords.latitude;
 	var longitude = position.coords.longitude;
+	var url = "https://api.darksky.net/forecast/"+key+"/"+latitude+","+longitude;
 
-	console.log(position.coords.latitude, position.coords.longitude)
-	console.log(latitude, longitude)
+	$.get({
+		url: url,
+		headers: {"Access-Control-Allow-Origin": true},
+		dataTyoe: 'jsonp',
+		type: 'GET',
+		success: function(data){
+			console.log(data);
+		}
+	})
 
 	$("#weather-feature").html(weather)
 }
