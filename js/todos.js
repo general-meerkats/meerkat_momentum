@@ -42,6 +42,7 @@ var focus = {
 	},
 	render: function(){
 
+		/*
 		var listMessage = LS.getData('focus-storage');
 		if(listMessage && listMessage.val !== null){
 			$('.focus-list-message').text(listMessage.val);	
@@ -51,10 +52,11 @@ var focus = {
 
 		if(listMessage && listMessage.isChecked === true){
 			$('.focus-list-message').addClass("finished");
+		*/
 
 		var dailyFocus = LS.getData('focus-storage');
 
-		if(dailyFocus.val === null || dailyFocus === null){
+		if(dailyFocus.val === null || !dailyFocus){
 			$('#focus-input').css('display','block');
 			$('.focus-list').css('display','none');
 			return;
