@@ -31,7 +31,7 @@
             };
 
             // do the work
-            $.getJSON(api.endpoint, api.params, api.inspectResponse)
+            $.getJSON(api.endpoint, api.params)
                 .then(renderQuote)
                 .catch(handleError);
         }
