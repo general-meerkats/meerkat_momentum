@@ -226,8 +226,7 @@ header {
 
 .panel-content > .settings-table {
     width: 100%;
-    height: calc(100% - 135px);
-    max-height: 200px;
+    height: calc(100% - 145px);
     border-collapse: collapse;
 }
 
@@ -247,7 +246,7 @@ header {
 .panel-content > div .settings-btn {
     font-size: 1.1em;
     padding: 5px;
-    margin: 5px 10px;
+    margin: 5px 10px 0 10px;
     color: rgba(255,255,255,0.75);
     background: none;
     border: 1px solid rgba(255,255,255,0.2);
@@ -449,7 +448,6 @@ footer > .quote {
     font-size: 1.1em;
     text-align: center;
     align-self: center;
-    text-overflow: ellipsis;
 }
 
 footer > .quote > a {
