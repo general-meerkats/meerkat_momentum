@@ -1,6 +1,7 @@
 var key = "3530553cce7adca5c5525b813494ada0";
 var geo = navigator.geolocation;
-var weather = [];
+var weather = ["clear-day", "clear-night", "rain", "snow", "sleet", "wind", "fog", "cloudy", "partly-cloudy-day", "partly-cloudy-night"];
+
 var options = {
   enableHighAccuracy: true,
   timeout: 10000,
@@ -23,11 +24,14 @@ function success(position) {
 		headers: 'Access-Control-Allow-Origin: *',
 		dataTyoe: 'jsonp',
 		success: function(data){
+			var icon = data.currently.icon;
 			console.log(data);
-			$('#weather_current').html(data.currently.temperature);
-			for(var x in data.currently){
-				$('#weather_current').append('<p>'+data.currently[x]+'</p>');
-			}
+			weather.find(function(icons){
+				icons == icon ? $('#icon_img').attr('src', "./assets/SVG/"+icon+".svg") : console.log(false)
+			});			
+			$('#weather-feature').append('<p>'+data.currently.temperature +'</p>');
+			$('#weather-feature').append('<p>'+data.timezone +'</p>');
+			
 		}
 	})
 }
@@ -35,5 +39,3 @@ function success(position) {
 function error() {
 	alert("Location services is not available or turned on");
 }
-
-
