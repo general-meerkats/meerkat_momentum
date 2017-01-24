@@ -4,7 +4,8 @@
 var time = (function($) {
     
     // init vars
-    var theDate,
+    var tehDate,
+        greet,
         defaultNames = [
             'pal',
             'sexy',
@@ -15,36 +16,62 @@ var time = (function($) {
             'human shield'
         ];
     
+    
+    // asign time-based message to 'greet' on initial load
+    (function getMessage() {
+        var timeOfDay,
+            initialHour = getHours(createDate()),
+            userName,
+            namesIndex = Math.floor(Math.random() * defaultNames.length);
+        
+        if (LS.getData('momentum-settings')) {
+            userName = LS.getData('momentum-settings').userName;
+        } else {
+            userName = defaultNames[namesIndex];
+        }
+        
+        if (initialHour < 12) {
+            timeOfDay = "Morning";
+        } else if (initialHour >= 12 && initialHour < 17) {
+            timeOfDay = "Afternoon";
+        } else {
+            timeOfDay = "Evening";
+        }
 
-    // check local storage for clock format,
-    // returns LS value if present, or true if missing
+        greet = `Good ${timeOfDay}, ${userName}.`;
+    })();
+    
+
+    // get clock format from LS or defaults
     function checkStandard() {
-        var storage = LS.getData('momentum-settings');
-        return (storage) ? storage.clockFormat : true;
+        if (LS.getData('momentum-settings')) {
+            return LS.getData('momentum-settings').clockFormat;
+        } else {
+            return true;
+        }
     }
     
 
-    // generate new date and assign to 'theDate'
+    // generate new date and assign to var 'tehDate'
     function createDate() {
-        theDate = new Date();
+        tehDate = new Date();
     }
     
         
-    // get hour value from theDate
+    // get hour value from tehDate
     function getHours() {
-        return theDate.getHours();
+        return tehDate.getHours();
     }
     
     
-    // get minutes value from theDate
+    // get minutes value from tehDate
     function getMinutes() {
-        return theDate.getMinutes();
+        return tehDate.getMinutes();
     }
     
     
     // generate hours:minutes time string
     function getTime() {
-        
         var hours,
             minutes;
         
@@ -72,32 +99,6 @@ var time = (function($) {
     }
     
     
-    // find and set userName
-    function getUserName() {
-        var namesIndex = Math.floor(Math.random() * defaultNames.length),
-            storage = LS.getData('momentum-settings');
-        
-        return (storage && storage.userName !== undefined) ? storage.userName : defaultNames[namesIndex];
-    }
-    
-    
-    // generate greeting message
-    function getMessage(userName) {
-        var hour = getHours(),
-            timeOfDay
-
-        if (hour < 12) {
-            timeOfDay = "morning";
-        } else if (hour >= 12 && hour < 17) {
-            timeOfDay = "afternoon";
-        } else {
-            timeOfDay = "evening";
-        }
-
-        return `Good ${timeOfDay}, `+userName+`.`;
-    }
-    
-    
     // render time to DOM
     function displayTime() {
         $('#time').text(getTime());
@@ -106,53 +107,41 @@ var time = (function($) {
     
     // render period to DOM
     function displayPeriod() {
-        
-        if (checkStandard()) {
-            $('#time-period').text(getPeriod());
-        } else {
-            $('#time-period').empty();
-        }
+        $('#time-period').text(getPeriod());
     }
     
     
     // render message to DOM
-    function displayMessage(userName) {
-        $('#time-message').text(getMessage(userName));
-        // console.log(this.getMessage());  // for diag
+    function displayMessage() {
+        $('#time-message').text(greet);
     }
     
     
     // call everything
     function init() {
-        userName = getUserName();
+        
         createDate();
         displayTime();
-        displayPeriod();
-        displayMessage(userName);
-        return userName;
+
+        if (checkStandard()) {
+            displayPeriod();
+        }
+        
+        displayMessage();
     }
     
     
-
-    function updateMe(userName) {
-        console.log("dewdis");
-        createDate();
-        displayTime();
-        displayPeriod();
-        displayMessage(userName);
-    }
-
-    // export public methods and name variable
+    // export public methods
     return {
-        init: init,
-        userName: init(),
-        updateMe: updateMe
+        init: init
     };
     
 }(jQuery));
 
-// fire on page load, then save name
-userName = time.userName;
 
-// re-fire every 20 seconds
-setInterval(function() {time.updateMe(userName)}, 20000);
+// fire on page load
+time.init();
+
+
+// fire every 20 seconds
+setInterval(time.init, 20000);
