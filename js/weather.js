@@ -3,7 +3,7 @@ var geo = navigator.geolocation;
 var weather = [];
 var options = {
   enableHighAccuracy: true,
-  timeout: 5000,
+  timeout: 10000,
   maximumAge: 300000
 };
 
@@ -16,19 +16,17 @@ if ("geolocation" in navigator) {
 function success(position) {
 	var latitude  = position.coords.latitude;
 	var longitude = position.coords.longitude;
-	var url = "https://api.darksky.net/forecast/"+key+"/"+latitude+","+longitude;
+	var url = "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/"+key+"/"+latitude+","+longitude;
 
 	$.get({
 		url: url,
-		headers: {"Access-Control-Allow-Origin": true},
+		headers: 'Access-Control-Allow-Origin: *',
 		dataTyoe: 'jsonp',
-		type: 'GET',
 		success: function(data){
 			console.log(data);
+			$("#weather-feature").html(data.timezone);
 		}
-	})
-
-	$("#weather-feature").html(weather)
+	});
 }
 
 function error() {
