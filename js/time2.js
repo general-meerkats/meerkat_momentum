@@ -5,7 +5,6 @@ var time = (function($) {
     
     // init vars
     var tehDate,
-        greet,
         defaultNames = [
             'pal',
             'sexy',
@@ -14,11 +13,12 @@ var time = (function($) {
             'good looking',
             'classy',
             'human shield'
-        ];
+        ],
+        greet = getMessage();
     
     
     // asign time-based message to 'greet' on initial load
-    (function getMessage() {
+    function getMessage() {
         var timeOfDay,
             initialHour = getHours(createDate()),
             userName,
@@ -38,8 +38,8 @@ var time = (function($) {
             timeOfDay = "Evening";
         }
 
-        greet = `Good ${timeOfDay}, ${userName}.`;
-    })();
+        return `Good ${timeOfDay}, ${userName}.`;
+    }
     
 
     // get clock format from LS or defaults
