@@ -41,6 +41,17 @@ var focus = {
 
 	},
 	render: function(){
+
+		var listMessage = LS.getData('focus-storage');
+		if(listMessage && listMessage.val !== null){
+			$('.focus-list-message').text(listMessage.val);	
+			var $form = $("form.focus").toggle();
+			var $form = $(".focus-list").toggle();
+		}
+
+		if(listMessage && listMessage.isChecked === true){
+			$('.focus-list-message').addClass("finished");
+
 		var dailyFocus = LS.getData('focus-storage');
 
 		if(dailyFocus.val === null || dailyFocus === null){
