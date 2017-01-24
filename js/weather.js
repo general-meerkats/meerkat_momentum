@@ -8,7 +8,7 @@ var options = {
 };
 
 if ("geolocation" in navigator) {	
-	geo.getCurrentPosition(success, error,options);
+	geo.getCurrentPosition(success, error, options);
 } else {
 	alert("Location services is not available or turned on");
 }
@@ -24,12 +24,16 @@ function success(position) {
 		dataTyoe: 'jsonp',
 		success: function(data){
 			console.log(data);
-			$("#weather-feature").html(data.timezone);
+			$('#weather_current').html(data.currently.temperature);
+			for(var x in data.currently){
+				$('#weather_current').append('<p>'+data.currently[x]+'</p>');
+			}
 		}
-	});
+	})
 }
 
 function error() {
 	alert("Location services is not available or turned on");
 }
+
 
