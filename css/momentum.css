@@ -111,14 +111,13 @@ header {
     border-top: 2px solid white;
 }
 div#weather-feature{
-margin-right: 1em;
+    margin-right: 1em;
 }
 img#icon_img {
-margin-bottom: -1em;
+    margin-bottom: -1em;
 }
 div#weather-feature p {
-    
-line-height: 1em;
+    line-height: 1em;
 }
 p.temp {
     float: right;
