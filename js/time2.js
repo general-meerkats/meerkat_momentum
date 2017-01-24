@@ -14,20 +14,27 @@ var time = (function($) {
             'classy',
             'human shield'
         ],
-        greet = getMessage();
+        dummy = selectName();
+    
+    
+    // pick a name from defaults
+    function selectName() {
+        var ind = Math.floor(Math.random() * defaultNames.length);
+        
+        return defaultNames[ind];
+    }
     
     
     // asign time-based message to 'greet' on initial load
     function getMessage() {
         var timeOfDay,
             initialHour = getHours(createDate()),
-            userName,
-            namesIndex = Math.floor(Math.random() * defaultNames.length);
+            userName;
         
         if (LS.getData('momentum-settings')) {
             userName = LS.getData('momentum-settings').userName;
         } else {
-            userName = defaultNames[namesIndex];
+            userName = dummy;
         }
         
         if (initialHour < 12) {
@@ -113,7 +120,7 @@ var time = (function($) {
     
     // render message to DOM
     function displayMessage() {
-        $('#time-message').text(greet);
+        $('#time-message').text(getMessage());
     }
     
     
