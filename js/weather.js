@@ -11,7 +11,7 @@ var options = {
 if ("geolocation" in navigator) {	
 	geo.getCurrentPosition(success, error, options);
 } else {
-	alert("Location services is not available or turned on");
+	console.log("Location services is not available or turned on");
 }
 
 function success(position) {
@@ -37,5 +37,5 @@ function success(position) {
 }
 
 function error() {
-	alert("Location services is not available or turned on");
+	console.log("Location services is not available or turned on");
 }

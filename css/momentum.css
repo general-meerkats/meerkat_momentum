@@ -79,6 +79,12 @@ body {
     z-index: -1;
 }
 
+.splash > img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
 /* ============================= END MAIN BODY ============================= */
 
 
@@ -369,7 +375,7 @@ section #time-period {
     text-align: center;
     display: inline-block;
     width: 720px;
-    text-shadow: none;
+/*    text-shadow: none;*/
 }
 
 .ask-focus {

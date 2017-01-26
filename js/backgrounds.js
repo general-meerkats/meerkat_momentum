@@ -24,6 +24,9 @@ var BG = (function () {
     function loadImg(source) {
                 
         return $.Deferred(function (task) {
+            
+            console.log(task);
+            
             var image = new Image();
             image.onload = function() { task.resolve(image); };
             image.onerror = function() { task.reject(); };
@@ -37,7 +40,8 @@ var BG = (function () {
      *
      * @params   [object]   image   [image element]
     */
-    function render(image) {
+    function render(image) {        
+        
         $('.splash')
             .append(image)
             .css('opacity', 1);
