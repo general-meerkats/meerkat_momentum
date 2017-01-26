@@ -32,10 +32,55 @@ function success(position) {
 			$('#weather-feature').append('<p class="temp">'+Math.round(data.currently.temperature) +' &degF</p>');
 			$('#weather-feature').append('<p class="location">'+data.hourly.summary +'</p>');
 			
+            renderPanel(data);
 		}
 	})
 }
 
 function error() {
 	console.log("Location services is not available or turned on");
+}
+
+// render weather-panel
+function renderPanel(data) {
+    var summary = data.daily.summary,
+        daily   = data.daily.data,
+        $weatherPanel = $('#weather-panel .panel-content'),
+        $summary = $('<p>Summary: ' + summary + '</p>'),
+        $table   = $('<table></table>'),
+        $daily   = $('<pre>' + JSON.stringify(daily, null, 2) + '</pre>');
+
+    $table
+        .append(['<thead>',
+                 '<tr>',
+                 '<th>Day</th>',
+                 '<th>Low</th>',
+                 '<th>High</th>',
+                 '<th>Weather</th>',
+                 '</tr',
+                 '</thead>',
+                 '<tbody>'
+                ].join(''))
+
+
+    daily.forEach(function (day) {
+
+        var date = new Date(day.time * 1000).toDateString(),
+            $tr = $('<tr></tr>');
+
+        $tr
+            .append('<td>' + date.slice(0, 10) + '</td>')
+            .append('<td>' + Math.round(day.temperatureMin) + '</td>')
+            .append('<td>' + Math.round(day.temperatureMax) + '</td>')
+            .append('<td>' + day.icon + ' <i class="wi wi-' + day.icon + '"></i></td>');
+
+
+        $table.append($tr);
+
+    })
+
+    $weatherPanel
+        .append($summary)
+        .append($table);
+
 }
