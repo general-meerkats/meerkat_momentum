@@ -1,48 +1,18 @@
 /* jshint esversion:6 */
 /* globals $, document */
 
+/*
+    This file should just load our other module's public init methods.
+*/
+
 $(document).ready(function () {
     
-    // cache DOM elements
-    var $meerkatBtn = $('#meerkat-btn'),
-        $aboutPanel = $('#about-panel'),
-        
-        $todosBtn   = $('#todos-btn'),
-        $todosPanel = $('#todos-panel'),
-        
-        $settingsBtn   = $('#settings-btn'),
-        $settingsPanel = $('#settings-panel'),
-        
-        $overlay = $('<div id="overlay"></div>');
+    // load backgrounds module
+    BG.init();
     
-    
-    // ============================ OVERLAY STUFF =============================
-
-    // hide overlay before appending to DOM
-    $overlay.hide();
-    
-    $('body').append($overlay);
-    
-    $overlay.on('click', function (event) {
-        event.preventDefault();
-        
-        $overlay.hide();
-        $aboutPanel.removeClass('about-show');
-        $todosPanel.removeClass('todos-show');
-        $settingsPanel.removeClass('settings-show');
-        
-        event.stopPropagation();
-    });
-    
-
-    // ========================== BACKGROUND STUFF ============================
-    
-    BG.init();  // <-- call public .init() method from backgrounds.js
-    
-    
-    // ========================== PANELS STUFF ===========================
-    
+    // load panels module
     Panels.init() // <-- call public .init() method from panels.js
 
+    // etc
     
 });
