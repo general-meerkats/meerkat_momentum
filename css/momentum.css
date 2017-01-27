@@ -327,15 +327,22 @@ footer .footer-right {
     border-bottom: 2px solid transparent;
 }
 
-footer .footer-left {
-    padding: 0.75em;
+footer .footer-left .gear-icon {
+    height: 60px;
+    width: 67px;
+    background: url('../assets/gear_icon_sprite.png') no-repeat 0 0;
+}
+
+footer .footer-left .gear-icon:hover {
+    background-position: -59px 0;
+    border-bottom: 2px solid #fff;
 }
 
 footer .footer-right {
     font-size: 1.2em;
     color: rgba(255,255,255,0.75);
     height: 100%;
-    padding: 1.3em 1em;
+    padding: 1.3em 10px;
     
     /* prevent highlighting of text */
     -webkit-user-select: none;
@@ -345,20 +352,9 @@ footer .footer-right {
     
 }
 
-footer .footer-right:hover,
-footer .footer-left:hover {
+footer .footer-right:hover {
     color: rgba(255,255,255,1);
     border-bottom: 2px solid #fff;
-}
-
-footer #svg-gear {
-    width: 35px;
-    height: 35px;
-    fill: rgba(255,255,255,0.75);
-}
-
-footer #svg-gear:hover {
-    fill: rgba(255,255,255,1);
 }
 
 /* ============================== END FOOTER =============================== */
