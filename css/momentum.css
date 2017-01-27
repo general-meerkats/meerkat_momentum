@@ -107,15 +107,18 @@ header {
 }
 
 .brand {
-    height: 54px;
-    padding: 5px 10px 0 10px;
+    height: 68px;
+    width: 68px;
     cursor: pointer;
     border-top: 2px solid transparent;
+    background: url('../assets/meerkat_icon_sprite.png') no-repeat -65px 0;
 }
 
 .brand:hover {
     border-top: 2px solid white;
+    background-position: 0 0;
 }
+
 div#weather-feature{
     margin-right: 1em;
 }
