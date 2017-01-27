@@ -121,7 +121,6 @@ header {
 
 div#weather-feature{
     margin-right: 1em;
-    max-width: 14em;
 }
 img#icon_img {
     margin-bottom: -1em;
@@ -129,7 +128,6 @@ img#icon_img {
 }
 div#weather-feature p {
     line-height: 1em;
-    color: black;
 }
 p.temp {
     float: right;
