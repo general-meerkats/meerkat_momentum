@@ -39,6 +39,15 @@ function success(position) {
 
 function error() {
 	console.log("Location services is not available or turned on");
+    
+    // on fail, call success() with Milwaukee WI location!
+    // just to have DOM stuff to test/dev with
+    success({
+        coords: {
+            latitude: 43.0389,
+            longitude: -87.90647
+        }
+    });
 }
 
 // render weather-panel

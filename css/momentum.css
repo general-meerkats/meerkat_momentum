@@ -119,25 +119,31 @@ header {
     background-position: 0 0;
 }
 
-div#weather-feature{
+div#weather-feature {
     margin-right: 1em;
+    cursor: pointer;
 }
+
 img#icon_img {
     margin-bottom: -1em;
     padding-left: 3em;
 }
+
 div#weather-feature p {
     line-height: 1em;
 }
+
 p.temp {
     float: right;
     position: relative;
     top: 2em;
     font-size: 1.5em;
 }
+
 p.location {
     margin-left: 2em;
 }
+
 /* ============================== END HEADER =============================== */
 
 /* ============================== MAIN CONTENT ============================= */
