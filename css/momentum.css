@@ -334,14 +334,15 @@ footer .footer-right {
 }
 
 footer .footer-left .gear-icon {
-    height: 60px;
-    width: 67px;
-    background: url('../assets/gear_icon_sprite.png') no-repeat 0 0;
+    font-size: 56px;
+    width:68px;
+    text-align: center;
+    opacity: .7;
 }
 
 footer .footer-left .gear-icon:hover {
-    background-position: -59px 0;
-    border-bottom: 2px solid #fff;
+    opacity:1;
+    border-bottom: 2px solid white;
 }
 
 footer .footer-right {
