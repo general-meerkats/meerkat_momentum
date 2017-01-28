@@ -82,7 +82,7 @@ function renderPanel(data) {
             .append('<td class="left">' + date.slice(0, 10) + '</td>')
             .append('<td>' + Math.round(day.temperatureMin) + '</td>')
             .append('<td>' + Math.round(day.temperatureMax) + '</td>')
-            .append('<td>' + day.icon + ' <i class="wi wi-' + day.icon + '"></i></td>');
+            .append('<td><i class="wi wi-forecast-io-' + day.icon + '"></i></td>');
         
         $trB
             .append('<td class="left" colspan="4">' + day.summary + '</td>');
