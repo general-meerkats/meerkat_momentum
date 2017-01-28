@@ -144,7 +144,7 @@ p.temp {
 
 p.location {
     margin-left: 1em;
-    color: black;
+    /* color: black; */
     max-width: 10em;
     right: -2em;
     position: relative;
