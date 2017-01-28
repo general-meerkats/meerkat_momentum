@@ -30,7 +30,7 @@ function success(position) {
 				icons == icon ? $('#icon_img').attr('src', "./assets/SVG/"+icon+".svg") : console.log(false)
 			});			
 			$('#weather-feature').append('<p class="temp">'+Math.round(data.currently.temperature) +' &degF</p>');
-			$('#weather-feature').append('<p class="location">'+data.hourly.summary +'</p>');
+			$('#weather-feature').append('<p class="location">' + data.hourly.summary +'</p>');
 			
             renderPanel(data);
 		}
