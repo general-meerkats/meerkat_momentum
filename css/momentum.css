@@ -112,6 +112,7 @@ header {
     cursor: pointer;
     border-top: 2px solid transparent;
     background: url('../assets/meerkat_icon.png') no-repeat 0 0;
+    z-index: 2;
 }
 
 .brand:hover {

@@ -54,9 +54,15 @@
 /*    height: calc(50% - 64px);*/
 }
 
+.about-panel .the-general {
+    display: block;
+    margin: auto;
+}
+
 .panel-content > .about-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 5px;
 }
 
 .panel-content > .about-table tr:hover {
