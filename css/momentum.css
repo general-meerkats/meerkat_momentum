@@ -127,7 +127,8 @@ div#weather-feature {
 
 img#icon_img {
     margin-bottom: -1em;
-    padding-left: 3em;
+    position: relative;
+    margin-left: 1em;
 }
 
 div#weather-feature p {
@@ -142,7 +143,11 @@ p.temp {
 }
 
 p.location {
-    margin-left: 2em;
+    margin-left: 1em;
+    color: black;
+    max-width: 10em;
+    right: -2em;
+    position: relative;
 }
 
 /* ============================== END HEADER =============================== */
