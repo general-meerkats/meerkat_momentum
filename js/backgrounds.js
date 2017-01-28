@@ -25,8 +25,6 @@ var BG = (function () {
                 
         return $.Deferred(function (task) {
             
-            console.log(task);
-            
             var image = new Image();
             image.onload = function() { task.resolve(image); };
             image.onerror = function() { task.reject(); };
