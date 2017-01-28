@@ -33,6 +33,9 @@
     border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
+.panel-content > p {
+    padding: 10px 5px;
+}
 
 /* ======================= SHOW/HIDE TOGGLE CLASSES ======================== */
 .left-panel-show {
@@ -90,17 +93,41 @@
 .weather-panel {
     top: 64px;
     right: -380px;
-    height: calc(50% - 64px);
+    height: auto;
 }
 
 .weather-panel table {
+    color: white;
     width: 100%;
+    border-collapse: collapse;
 }
 
-.weather-panel table td {
-    padding: 0.3em;
-    text-align: center;
+.weather-panel table th {
+    padding: 5px;
+    border-bottom: 1px solid white;
 }
+
+.weather-panel table td,
+.weather-panel table th {
+    text-align: center;
+    padding: 5px;
+}
+
+.weather-panel table td.left,
+.weather-panel table th.left {
+    text-align: left;
+}
+
+.weather-panel table tr:nth-child(even) td {
+    padding-top: 0;
+    padding-bottom: .8em;
+}
+
+.weather-panel table tr:nth-child(odd) td {
+    padding-top: .8em;
+    padding-bottom: 0;
+}
+
 
 /* ============================ SETTINGS PANEL ============================= */
 .settings-panel {

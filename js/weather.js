@@ -62,7 +62,7 @@ function renderPanel(data) {
     $table
         .append(['<thead>',
                  '<tr>',
-                 '<th>Day</th>',
+                 '<th class="left">Day</th>',
                  '<th>Low</th>',
                  '<th>High</th>',
                  '<th>Weather</th>',
@@ -75,16 +75,21 @@ function renderPanel(data) {
     daily.forEach(function (day) {
 
         var date = new Date(day.time * 1000).toDateString(),
-            $tr = $('<tr></tr>');
+            $trA = $('<tr></tr>'),
+            $trB = $('<tr></tr>');
 
-        $tr
-            .append('<td>' + date.slice(0, 10) + '</td>')
+        $trA
+            .append('<td class="left">' + date.slice(0, 10) + '</td>')
             .append('<td>' + Math.round(day.temperatureMin) + '</td>')
             .append('<td>' + Math.round(day.temperatureMax) + '</td>')
             .append('<td>' + day.icon + ' <i class="wi wi-' + day.icon + '"></i></td>');
+        
+        $trB
+            .append('<td class="left" colspan="4">' + day.summary + '</td>');
 
-
-        $table.append($tr);
+        $table
+            .append($trA)
+            .append($trB);
 
     })
 
