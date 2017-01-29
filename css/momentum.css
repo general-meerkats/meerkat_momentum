@@ -143,6 +143,7 @@ header {
 #weather-feature > .location {
     text-shadow: 0px 0px 10px #000;
     padding-left: 10px;
+    font-weight: bold;
 }
 
 #weather-feature > .temp {
