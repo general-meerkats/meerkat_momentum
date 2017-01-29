@@ -37,7 +37,7 @@ var Weather = (function () {
     function getIpLocation() {
         console.log('html5 geolocation failed, using IP-based location instead...');
 
-        $.getJSON('https://freegeoip.net/json/184.58.233.92')
+        $.getJSON('https://freegeoip.net/json/')
             .then(getWeather)
             .catch(weatherErrors);
     }
@@ -109,8 +109,8 @@ var Weather = (function () {
         var icon  = data.weather.currently.icon,
             temp  = Math.round(data.weather.currently.temperature),
             city  = data.position.city.toUpperCase(),
-            $wi   = $('<div id="icon_img"></div>'),
-            $temp = '<p class="temp">' + temp + ' &degF</p>',
+            $wi   = $('<span id="icon_img"></span>'),
+            $temp = '<span class="temp">' + temp + ' &degF</span>',
             $loc  = '<p class="location">' + city + '</p>';
 
         $wi.append('<i class="wi wi-forecast-io-' + icon + '"></i>');
