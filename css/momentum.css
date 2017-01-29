@@ -124,12 +124,12 @@ header {
     padding: 5px 5px 0 0;
     cursor: pointer;
     opacity: .75;
+    text-align: right;
 }
 
 #weather-feature:hover {
     opacity: 1;
 }
-
 
 #weather-feature > #icon_img {
     display: inline-block;
@@ -140,16 +140,12 @@ header {
 #weather-feature > .temp,
 #weather-feature > .location {
     text-shadow: 0px 0px 10px #000;
-    padding: 0 10px;
+    padding-left: 10px;
 }
 
 #weather-feature > .temp {
     display: inline-block;
     font-size: 22px;
-}
-
-#weather-feature > .location {
-    text-align: right;
 }
 
 /* ============================== END HEADER =============================== */

@@ -110,7 +110,7 @@ var Weather = (function () {
             temp  = Math.round(data.weather.currently.temperature),
             city  = data.position.city.toUpperCase(),
             $wi   = $('<span id="icon_img"></span>'),
-            $temp = '<span class="temp">' + temp + ' &degF</span>',
+            $temp = '<span class="temp">' + temp + '&deg</span>',
             $loc  = '<p class="location">' + city + '</p>';
 
         $wi.append('<i class="wi wi-forecast-io-' + icon + '"></i>');
@@ -151,8 +151,8 @@ var Weather = (function () {
 
             $trA
                 .append('<td class="left">' + date.slice(0, 10) + '</td>')
-                .append('<td>' + Math.round(day.temperatureMin) + '</td>')
-                .append('<td>' + Math.round(day.temperatureMax) + '</td>')
+                .append('<td>' + Math.round(day.temperatureMin) + '&deg</td>')
+                .append('<td>' + Math.round(day.temperatureMax) + '&deg</td>')
                 .append('<td><i class="wi wi-forecast-io-' + day.icon + '"></i></td>');
 
             $trB
