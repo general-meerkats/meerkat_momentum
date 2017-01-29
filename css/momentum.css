@@ -121,14 +121,16 @@ header {
 }
 
 #weather-feature {
-    padding: 5px 5px 0 0;
+    padding: 3px 5px 0 0;
     cursor: pointer;
     opacity: .75;
     text-align: right;
+    border-top: 2px solid transparent;
 }
 
 #weather-feature:hover {
     opacity: 1;
+    border-top: 2px solid #fff;
 }
 
 #weather-feature > #icon_img {
