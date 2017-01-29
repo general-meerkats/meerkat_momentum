@@ -11,6 +11,7 @@ $(document).ready(function () {
     BG.init();
     
     // load panels module
+	Weather.init()
     Panels.init() // <-- call public .init() method from panels.js
 
     // etc
