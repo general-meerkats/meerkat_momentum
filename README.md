@@ -4,6 +4,8 @@
 
 #### Written by The General Meerkats.
 
+[![Code Climate](https://codeclimate.com/github/belcurv/meerkat_momentum/badges/gpa.svg)](https://codeclimate.com/github/belcurv/meerkat_momentum)
+
 Demo:
 
 https://belcurv.github.io/meerkat_momentum/
