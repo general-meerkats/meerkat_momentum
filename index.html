@@ -30,10 +30,10 @@
     <header>
         <div class="Grid">
             <div class="Grid-cell">
-                <div id="meerkat-btn" class="brand"></div>
+                <div id="meerkat-btn" data-panel="#about-panel" class="brand"></div>
             </div>
             <div class="Grid-cell--autoSize">
-                <div id="weather-feature"></div>
+                <div id="weather-feature" data-panel="#weather-panel" ></div>
             </div>
         </div>   
     </header>
@@ -237,13 +237,13 @@
     
     <!-- ============================= FOOTER ============================= -->
     <footer>
-        <div id="settings-btn" class="footer-left">
+        <div id="settings-btn" data-panel="#settings-panel" class="footer-left">
             <i class="gear-icon fa fa-cog" aria-hidden="true"></i>
         </div>
         <div class="quote">
             <a href="" id="quoteFeature"></a>
         </div>
-        <div id="todos-btn" class="footer-right">
+        <div id="todos-btn" data-panel="#todos-panel" class="footer-right">
             Todo
         </div>
     </footer>

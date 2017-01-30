@@ -30,10 +30,10 @@ var Panels = (function () {
     // bind events
     function bindEvents() {
         DOM.$overlay.on('click', overlayHandler);
-        DOM.$meerkatBtn.on('click', aboutPanelHandler);
-        DOM.$todosBtn.on('click', todosPanelHandler);
-        DOM.$settingsBtn.on('click', settingsPanelHandler);
-        DOM.$weatherBtn.on('click', weatherPanelHandler);
+        DOM.$meerkatBtn.on('click', panelHandler);
+        DOM.$todosBtn.on('click', panelHandler);
+        DOM.$settingsBtn.on('click', panelHandler);
+        DOM.$weatherBtn.on('click', panelHandler);
     }
 
     
@@ -51,76 +51,26 @@ var Panels = (function () {
     }
     
     
-    // about panel handler
-    function aboutPanelHandler(event) {
+    // handle panel events
+    function panelHandler(event) {
         
-        // add / remove CSS class
-        DOM.$aboutPanel.toggleClass('left-panel-show');
+        // capture event bindings
+        var targetPanel = event.currentTarget.dataset.panel,
+            triggerId = event.currentTarget.id;
+        
+        // toggle '*-panel-show' CSS class on targetPanel,
+        // based on the ID of the triggerInput element
+        if (triggerId === 'meerkat-btn' || triggerId === 'settings-btn') {
+            $(targetPanel).toggleClass('left-panel-show');
+        } else {
+            $(targetPanel).toggleClass('right-panel-show');
+        }
         
         // show overlay
         DOM.$overlay.show();
-                
-        // hide other panels
-        DOM.$todosPanel.removeClass('right-panel-show');
-        DOM.$settingsPanel.removeClass('left-panel-show');
-        DOM.$weatherPanel.removeClass('right-panel-show');
         
+        // prevent event bubbling up the DOM
         event.stopPropagation();
-    }
-    
-    
-    // todo panel event handler
-    function todosPanelHandler(event) {
-        
-        // add / remove CSS class
-        DOM.$todosPanel.toggleClass('right-panel-show');
-        
-        // toggle overlay
-        DOM.$overlay.toggle();
-        
-        // hide other panels
-        DOM.$aboutPanel.removeClass('left-panel-show');
-        DOM.$settingsPanel.removeClass('left-panel-show');
-        DOM.$weatherPanel.removeClass('right-panel-show');
-        
-        event.stopPropagation();
-    }
-    
-    
-    // settings panel handler
-    function settingsPanelHandler(event) {
-        
-        // add / remove CSS class
-        DOM.$settingsPanel.toggleClass('left-panel-show');
-        
-        // toggle overlay
-        DOM.$overlay.toggle();
-        
-        // hide other panels
-        DOM.$aboutPanel.removeClass('left-panel-show');
-        DOM.$todosPanel.removeClass('right-panel-show');
-        DOM.$weatherPanel.removeClass('right-panel-show');
-        
-        event.stopPropagation();
-    }
-    
-    
-    // weather panel handler
-    function weatherPanelHandler(event) {
-        
-        // add/remove CSS class
-        DOM.$weatherPanel.toggleClass('right-panel-show');
-        
-        // toggle overlay
-        DOM.$overlay.toggle();
-        
-        // hide other panels
-        DOM.$aboutPanel.removeClass('left-panel-show');
-        DOM.$settingsPanel.removeClass('left-panel-show');
-        DOM.$todosPanel.removeClass('right-panel-show');
-        
-        event.stopPropagation();
-        
     }
     
     
