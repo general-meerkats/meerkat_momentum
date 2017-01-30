@@ -68,7 +68,6 @@ body {
     justify-content: start;
 }
 
-
 /* full bleed background image container style */
 
 .splash {
@@ -94,8 +93,24 @@ body {
     object-fit: cover;
 }
 
-
 /* ============================= END MAIN BODY ============================= */
+
+
+/* ============================== TYPOGRAPHY =============================== */
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+
+h4 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* ============================ END TYPOGRAPHY ============================= */
 
 
 /* ================================ HEADER ================================= */
@@ -247,6 +262,9 @@ section #time-period {
     font-size: 2em;
     background: rgba(255, 255, 255, 0.1);
     border-bottom: 2px solid white;
+}
+
+#focus-input:focus {
     outline: 0;
 }
 
@@ -263,11 +281,6 @@ section #time-period {
     /* Internet Explorer */
     /* Opera < 12.1 */
     animation: fadein 1s;
-}
-
-.focus-list > h4 {
-    font-size: 16px;
-    font-weight: 400;
 }
 
 @-webkit-keyframes fadein {
@@ -438,12 +451,15 @@ footer .footer-right:hover {
     color: white;
     text-align: center;
     text-shadow: none;
-    outline: 0;
     display: inline-block;
     width: 314px;
     margin-left: 19px;
     font-size: 19px;
     height: 48px;
+}
+
+#new-task {
+    outline: 0;
 }
 
 #taskList {
