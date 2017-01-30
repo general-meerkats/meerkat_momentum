@@ -31,7 +31,8 @@ var time = (function($) {
             initialHour = getHours(createDate()),
             userName;
         
-        if (LS.getData('momentum-settings')) {
+        // check for local storage & whether userName is undefined 
+        if (LS.getData('momentum-settings') && LS.getData('momentum-settings').userName !== undefined) {
             userName = LS.getData('momentum-settings').userName;
         } else {
             userName = dummy;
