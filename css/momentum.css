@@ -1,4 +1,5 @@
 /* resets */
+
 * {
     padding: 0;
     margin: 0;
@@ -6,7 +7,9 @@
     box-sizing: border-box;
 }
 
+
 /* anti-iOS Safari / Webkit tweak */
+
 textarea,
 input.text,
 input[type="text"],
@@ -22,12 +25,14 @@ input[type="number"],
 
 
 /* Remove number spinner from Firefox */
+
 input[type=number] {
     -moz-appearance: textfield;
 }
 
 
 /* Remove number spinner from Safari and Chrome */
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -48,10 +53,8 @@ body {
     font-family: 'Josefin Sans', 'Arial', sans-serif;
     font-size: 14px;
     color: #fff;
-    
     /* background color and image */
     background-color: #333;
-    
     /* layout */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -60,10 +63,14 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: start;
 }
 
+
 /* full bleed background image container style */
+
 .splash {
     position: fixed;
     top: 0;
@@ -74,6 +81,7 @@ body {
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: cover;
+    -webkit-transition: opacity 0.75s linear;
     transition: opacity 0.75s linear;
     opacity: 0;
     z-index: -1;
@@ -82,8 +90,10 @@ body {
 .splash > img {
     width: 100vw;
     height: 100vh;
+    -o-object-fit: cover;
     object-fit: cover;
 }
+
 
 /* ============================= END MAIN BODY ============================= */
 
@@ -96,14 +106,11 @@ header {
     height: 60px;
     margin: 0;
     padding: 0;
-    
     /* shadow */
-    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
-    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
-    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    
-    
-    z-index: 1; /* must be > 0 or Glyphicons show above header */
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    z-index: 1;
+    /* must be > 0 or Glyphicons show above header */
 }
 
 .brand {
@@ -153,7 +160,9 @@ header {
     font-size: 22px;
 }
 
+
 /* ============================== END HEADER =============================== */
+
 
 /* ============================== MAIN CONTENT ============================= */
 
@@ -170,17 +179,16 @@ article {
     flex-direction: column;
     padding: 0.25em;
     width: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
-
     /* push article beneath header */
     margin-top: 60px;
-
     /* limit main content width and center */
     max-width: 1080px;
     margin-left: auto;
     margin-right: auto;
-
-/*    border: 1px black solid;*/
+    /*    border: 1px black solid;*/
 }
 
 section {
@@ -188,12 +196,12 @@ section {
     -ms-flex: 0;
     flex: 0;
     padding: 0.5em;
-/*    border: 1px black solid;*/
+    /*    border: 1px black solid;*/
+    -ms-flex-item-align: center;
     align-self: center;
     text-align: center;
     text-shadow: 0px 0px 15px #000;
 }
-
 
 section #time {
     font-size: 14em;
@@ -207,87 +215,105 @@ section #time-period {
     font-size: 4em;
 }
 
-
-.focus-list-container:hover, .fa-square-o:hover, .fa-check-square-o:hover,
-.fa-times:hover{
+.focus-list-container:hover,
+.fa-square-o:hover,
+.fa-check-square-o:hover,
+.fa-times:hover {
     cursor: pointer;
 }
-.focus-section{
-    margin-top:0px;
-    height:120px;
+
+.focus-section {
+    margin-top: 0px;
+    height: 120px;
 }
-.focus{
-    color:white;
+
+.focus {
+    color: white;
     text-align: center;
     display: inline-block;
     width: 720px;
-/*    text-shadow: none;*/
+    /*    text-shadow: none;*/
 }
 
 .ask-focus {
     font-size: 2.5em;
-
 }
 
 #focus-input {
-    padding-top:12px;
-    padding-bottom:12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     font-weight: 700;
     width: 720px;
     font-size: 2em;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-bottom: 2px solid white;
     outline: 0;
 }
 
-.focus-list{
-    height:100px;
-    padding:1em;
+.focus-list {
+    height: 100px;
+    padding: 1em;
     font-size: 2em;
-    font-weight:700;
+    font-weight: 700;
     display: none;
     line-height: 1.5;
-
-    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 1s; /* Firefox < 16 */
-    -ms-animation: fadein 1s; /* Internet Explorer */
-    -o-animation: fadein 1s; /* Opera < 12.1 */
+    -webkit-animation: fadein 1s;
+    /* Safari, Chrome and Opera > 12.1 */
+    /* Firefox < 16 */
+    /* Internet Explorer */
+    /* Opera < 12.1 */
     animation: fadein 1s;
 }
 
-.focus-list > h4{
-    font-size:16px;
-    font-weight:400;
+.focus-list > h4 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-.focus-list-message{
-    padding:0px 25px 0px 25px;
+
+.focus-list-message {
+    padding: 0px 25px 0px 25px;
 }
-.checkbox{
-    width:15px;
-    height:15px;
+
+.checkbox {
+    width: 15px;
+    height: 15px;
     font-size: 20px;
     display: none;
 }
 
-.close{
+.close {
     position: relative;
-    bottom:4px;
-    width:15px;
-    height:15px;
+    bottom: 4px;
+    width: 15px;
+    height: 15px;
     font-size: 12px;
     display: none;
 }
 
-.focus-section:hover  .checkbox, .focus-section:hover  .close{
-    display:inline-block;
+.focus-section:hover .checkbox,
+.focus-section:hover .close {
+    display: inline-block;
 }
 
-.finished{
+.finished {
     text-decoration: line-through;
 }
 
@@ -296,7 +322,10 @@ section #time-period {
 
 
 /* ================================ FOOTER ================================= */
+
 footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     height: 60px;
@@ -304,55 +333,59 @@ footer {
     padding: 0;
     color: #fff;
     font-weight: bold;
-    
     /* shadow */
-    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-/*    border-top: 1px solid white;*/
-    
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    /*    border-top: 1px solid white;*/
 }
 
+
 /* quote feature */
+
 footer > .quote {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     padding: 0 2em;
     font-size: 1.1em;
     text-align: center;
+    -ms-flex-item-align: center;
     align-self: center;
 }
 
 footer > .quote > a {
-    color: rgba(255,255,255,0.75);
+    color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
     text-shadow: 0px 0px 10px #000;
 }
 
 footer > .quote > a:hover {
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
 }
-/* end quote feature */
 
+
+/* end quote feature */
 
 footer .footer-left,
 footer .footer-right {
     cursor: pointer;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 auto;
     flex: 0 auto;
     border-bottom: 2px solid transparent;
 }
 
 footer .footer-left .gear-icon {
     font-size: 40px;
-    height:60px;
-    width:68px;
+    height: 60px;
+    width: 68px;
     padding-top: 9px;
     text-align: center;
     opacity: .75;
 }
 
 footer .footer-left .gear-icon:hover {
-    opacity:1;
+    opacity: 1;
     border-bottom: 2px solid white;
 }
 
@@ -361,13 +394,11 @@ footer .footer-right {
     opacity: .75;
     height: 100%;
     padding: 1.3em 10px;
-    
     /* prevent highlighting of text */
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    
 }
 
 footer .footer-right:hover {
@@ -375,31 +406,34 @@ footer .footer-right:hover {
     border-bottom: 2px solid #fff;
 }
 
+
 /* ============================== END FOOTER =============================== */
 
 
 /* ============================== RESPONSIVE =============================== */
 
+
 /* Greater than 640x, show nav text & hide icons */
-@media all and (min-width: 640px) {
-    
-}
+
+@media all and (min-width: 640px) {}
+
 
 /* Tiny screens: narrow nav icon spacing & full width content */
-@media all and (max-width: 360px) {
 
+@media all and (max-width: 360px) {
     section {
         font-size: 2em;
     }
-    
     article {
         padding: 0 0 0.5em 0;
     }
 }
 
+
 /*TODO LIST*/
+
 #new-task {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid white;
     color: white;
     text-align: center;
@@ -408,28 +442,28 @@ footer .footer-right:hover {
     display: inline-block;
     width: 314px;
     margin-left: 19px;
-    font-size:19px;
+    font-size: 19px;
     height: 48px;
-
 }
+
 #taskList {
     width: 350px;
     margin: 17px auto;
-    font-size:19px;
-    font-weight:600;
+    font-size: 19px;
+    font-weight: 600;
 }
 
 ul li {
-    background-color:#17181D;
-    height:48px;
-    width:314px;
-    padding-left:12px;
-    margin:0 auto 10px auto;
-    line-height:48px;
-    list-style:none;
-    overflow:hidden;
-    white-space:nowrap;
-    text-overflow:ellipsis;
+    background-color: #17181D;
+    height: 48px;
+    width: 314px;
+    padding-left: 12px;
+    margin: 0 auto 10px auto;
+    line-height: 48px;
+    list-style: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 ul li .check-task {

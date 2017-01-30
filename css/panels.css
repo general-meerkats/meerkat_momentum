@@ -19,7 +19,10 @@
     background: rgba(0,0,0,.8);
     border-radius: 5px;
     z-index: 999;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .panel-content {
@@ -39,10 +42,12 @@
 
 /* ======================= SHOW/HIDE TOGGLE CLASSES ======================== */
 .left-panel-show {
+    -webkit-transform: translateX(390px);
     transform: translateX(390px);
 }
 
 .right-panel-show {
+    -webkit-transform: translateX(-390px);
     transform: translateX(-390px)
 }
 
