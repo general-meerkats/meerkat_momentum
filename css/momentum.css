@@ -121,11 +121,16 @@ header {
     height: 60px;
     margin: 0;
     padding: 0;
+    
     /* shadow */
+    background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    z-index: 1;
+    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    
+
     /* must be > 0 or Glyphicons show above header */
+    z-index: 1;
 }
 
 .brand {
@@ -164,7 +169,7 @@ header {
 #weather-feature > .temp,
 #weather-feature > .location {
     font-size: 12px;
-    text-shadow: 0px 0px 10px #000;
+    text-shadow: 0 0 10px #000;
     text-align: center;
     padding-left: 10px;
     font-weight: bold;
@@ -215,7 +220,7 @@ section {
     -ms-flex-item-align: center;
     align-self: center;
     text-align: center;
-    text-shadow: 0px 0px 15px #000;
+    text-shadow: 0 0 15px #000;
 }
 
 section #time {
@@ -238,7 +243,7 @@ section #time-period {
 }
 
 .focus-section {
-    margin-top: 0px;
+    margin-top: 0;
     height: 120px;
 }
 
@@ -275,12 +280,11 @@ section #time-period {
     font-weight: 700;
     display: none;
     line-height: 1.5;
-    -webkit-animation: fadein 1s;
-    /* Safari, Chrome and Opera > 12.1 */
-    /* Firefox < 16 */
-    /* Internet Explorer */
-    /* Opera < 12.1 */
-    animation: fadein 1s;
+    -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */ 
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
 }
 
 @-webkit-keyframes fadein {
@@ -302,7 +306,7 @@ section #time-period {
 }
 
 .focus-list-message {
-    padding: 0px 25px 0px 25px;
+    padding: 0 25px 0 25px;
 }
 
 .checkbox {
@@ -346,10 +350,12 @@ footer {
     padding: 0;
     color: #fff;
     font-weight: bold;
+    
     /* shadow */
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-    /*    border-top: 1px solid white;*/
+    background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
 }
 
 
@@ -369,7 +375,7 @@ footer > .quote {
 footer > .quote > a {
     color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
-    text-shadow: 0px 0px 10px #000;
+    text-shadow: 0 0 10px #000;
 }
 
 footer > .quote > a:hover {
