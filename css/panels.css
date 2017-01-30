@@ -138,7 +138,7 @@
 .settings-panel {
     bottom: 70px;
     left: -380px;
-    height: calc(50% - 70px);
+/*    height: calc(50% - 70px);*/
     padding-top: 10px;
 }
 
@@ -162,7 +162,7 @@
     color: #fff;
     font-size: 1.3em;
     font-weight: bold;
-    padding: 0 10px;
+    padding: 10px;
     vertical-align: middle;
 }
 
