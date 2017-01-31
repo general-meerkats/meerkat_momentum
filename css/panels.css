@@ -20,6 +20,8 @@
     border-radius: 5px;
     z-index: 999;
     -webkit-transition: -webkit-transform 0.3s ease;
+       -moz-transition: -webkit-transform 0.3s ease;
+         -o-transition: -webkit-transform 0.3s ease;
     transition: -webkit-transform 0.3s ease;
     transition: transform 0.3s ease;
     transition: transform 0.3s ease, -webkit-transform 0.3s ease;
@@ -37,12 +39,18 @@
 /* ======================= SHOW/HIDE TOGGLE CLASSES ======================== */
 .left-panel-show {
     -webkit-transform: translateX(390px);
-    transform: translateX(390px);
+       -moz-transform: translateX(390px);
+        -ms-transform: translateX(390px);
+         -o-transform: translateX(390px);
+            transform: translateX(390px);
 }
 
 .right-panel-show {
     -webkit-transform: translateX(-390px);
-    transform: translateX(-390px)
+       -moz-transform: translateX(-390px);
+        -ms-transform: translateX(-390px);
+         -o-transform: translateX(-390px);
+            transform: translateX(-390px)
 }
 
 
