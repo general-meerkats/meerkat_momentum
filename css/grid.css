@@ -11,7 +11,7 @@
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+        flex-wrap: wrap;
     list-style: none;
     margin: 0;
     padding: 10px;
@@ -19,10 +19,11 @@
 
 .Grid-cell {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
+        flex: 1 0 auto;
     box-sizing: border-box;
-    /* width & height incl padding and border */
 }
 
 
@@ -75,14 +76,18 @@ header .Grid-cell {
 /* Alignment per row */
 
 .Grid--top {
-    -webkit-box-align: start;
-    -ms-flex-align: start;
+     -webkit-box-align: start;
+        -moz-box-align: start;
+         -ms-box-align: start;
+        -ms-flex-align: start;
     -ms-grid-row-align: flex-start;
     align-items: flex-start;
 }
 
 .Grid--bottom {
     -webkit-box-align: end;
+       -moz-box-align: end;
+        -ms-box-align: end;
     -ms-flex-align: end;
     -ms-grid-row-align: flex-end;
     align-items: flex-end;
@@ -90,6 +95,8 @@ header .Grid-cell {
 
 .Grid--center {
     -webkit-box-align: center;
+       -moz-box-align: center;
+        -ms-box-align: center;
     -ms-flex-align: center;
     -ms-grid-row-align: center;
     align-items: center;
@@ -97,6 +104,8 @@ header .Grid-cell {
 
 .Grid--justifyCenter {
     -webkit-box-pack: center;
+       -moz-box-pack: center;
+        -ms-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
 }
@@ -121,8 +130,10 @@ header .Grid-cell {
 
 .Grid-cell--autoSize {
     -webkit-box-flex: 0;
+       -moz-box-flex: 0;
+        -ms-box-flex: 0;
     -ms-flex: none;
-    flex: none;
+        flex: none;
 }
 
 
@@ -133,30 +144,40 @@ header .Grid-cell {
 
 .Grid--fit > .Grid-cell {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
 }
 
 .Grid--full > .Grid-cell {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1 0 100%;
     flex: 1 0 100%;
 }
 
 .Grid--1of2 > .Grid-cell {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1 0 50%;
     flex: 1 0 50%;
 }
 
 .Grid--1of3 > .Grid-cell {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1 0 33.3333%;
     flex: 1 0 33.3333%;
 }
 
 .Grid--1of4 > .Grid-cell {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1 0 25%;
     flex: 1 0 25%;
 }
@@ -167,26 +188,36 @@ header .Grid-cell {
 @media (min-width: 384px) {
     .small-Grid--fit > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
     }
     .small-Grid--full > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 100%;
         flex: 1 0 100%;
     }
     .small-Grid--1of2 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 50%;
         flex: 1 0 50%;
     }
     .small-Grid--1of3 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 33.3333%;
         flex: 1 0 33.3333%;
     }
     .small-Grid--1of4 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 25%;
         flex: 1 0 25%;
     }
@@ -198,26 +229,36 @@ header .Grid-cell {
 @media (min-width: 576px) {
     .med-Grid--fit > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
     }
     .med-Grid--full > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 100%;
         flex: 1 0 100%;
     }
     .med-Grid--1of2 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 50%;
         flex: 1 0 50%;
     }
     .med-Grid--1of3 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 33.3333%;
         flex: 1 0 33.3333%;
     }
     .med-Grid--1of4 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 25%;
         flex: 1 0 25%;
     }
@@ -229,48 +270,66 @@ header .Grid-cell {
 @media (min-width: 960px) {
     .large-Grid--fit > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
     }
     .large-Grid--full > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 100%;
         flex: 1 0 100%;
     }
     .large-Grid--1of2 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 50%;
         flex: 1 0 50%;
     }
     .large-Grid--1of3 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 33.3333%;
         flex: 1 0 33.3333%;
     }
     .large-Grid--1of4 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 25%;
         flex: 1 0 25%;
     }
     /* custom 30:70 split*/
     .large-Grid--1of2-30-70 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 30%;
         flex: 1 0 30%;
     }
     .large-Grid--1of2-30-70 > .Grid-cell:not(:first-child) {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 70%;
         flex: 1 0 70%;
     }
     /* custom 70:30 split*/
     .large-Grid--1of2-70-30 > .Grid-cell {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 70%;
         flex: 1 0 70%;
     }
     .large-Grid--1of2-70-30 > .Grid-cell:not(:first-child) {
         -webkit-box-flex: 1;
+           -moz-box-flex: 1;
+            -ms-box-flex: 1;
         -ms-flex: 1 0 30%;
         flex: 1 0 30%;
     }
