@@ -5,9 +5,17 @@ Steps
     https://nodejs.org/en/download/
 
 2.  `npm init` to initialize the app and create your `package.json` file.  The defaults are geenrally acceptable.  Replace _ with 'dashes'. I prefer MIT's license. This stuff doesn't really matter at this point.
-3.  Then install a whole pile of packages using npm, Node's package manager:
+3.  Then install Gulp _globally_ via Node's package manager:
 
-    *   gulp - _the infamous task runner_
+    `npm install -g gulp-cli`
+    
+    If in debian/ubuntu linux, prefix that with _sudo_:
+    
+    `sudo npm install -g gulp-cli`
+    
+4.  Then install gulp _locally_, plus a whole pile of packages:
+
+    *   gulp
     *   gulp-rename - _for renaming files_
     *   gulp-concat - _merging files_
     *   gulp-uglify - _minifying files_
