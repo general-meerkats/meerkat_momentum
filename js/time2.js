@@ -1,7 +1,7 @@
 /* jshint esversion:6 */
 /* globals $, console, LS */
 
-var time = (function($) {
+var Time = (function() {
     
     // init vars
     var tehDate,
@@ -125,7 +125,7 @@ var time = (function($) {
     }
     
     
-    // call everything
+    // public init method
     function init() {
         
         createDate();
@@ -144,12 +144,4 @@ var time = (function($) {
         init: init
     };
     
-}(jQuery));
-
-
-// fire on page load
-time.init();
-
-
-// fire every 20 seconds
-setInterval(time.init, 20000);
+}());

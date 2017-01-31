@@ -15,6 +15,12 @@ $(document).ready(function () {
     
     // load weather module
     Weather.init();
+    
+    // load time module
+    Time.init();
+
+    // re-call time.init() every 20 seconds
+    setInterval(Time.init, 20000);
 
     // load quote module
     Quotes.getQuote();
