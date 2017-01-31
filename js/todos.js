@@ -31,7 +31,7 @@ var focus = {
 		var $input = $(e.target);
 		var val = $input.val().trim();
 
-		if ((e.which != 13) || (!val)){
+		if ((e.which !== 13) || (!val)){
 			return;
 		}
 		var objectStorage = {'val': val, 'isChecked': false};
@@ -86,7 +86,7 @@ var focus = {
 		var $input = $(e.target);
 		var newTask = $input.val().trim();
 
-		if ((e.which != 13) || (!newTask)){
+		if ((e.which !== 13) || (!newTask)){
 			return;
 		}
 		// save current saved tasks
@@ -142,7 +142,7 @@ var focus = {
 		var taskSelectedId = taskSelectedElement.attr('id');
 
 		var index = todoList.findIndex(function(x) {
-			return x.id == taskSelectedId;
+			return x.id === taskSelectedId;
 		});
 
 		todoList.splice(index, 1);
