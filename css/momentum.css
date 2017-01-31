@@ -4,6 +4,10 @@
     padding: 0;
     margin: 0;
     border: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -11,7 +15,7 @@
 /* anti-iOS Safari / Webkit tweak */
 
 textarea,
-input.text,
+.text,
 input[type="text"],
 input[type="button"],
 input[type="submit"],
@@ -19,6 +23,7 @@ input[type="date"],
 input[type="number"],
 .input-checkbox {
     -webkit-appearance: none;
+    -moz-appearance: none;
     border-radius: 0;
     margin: 0;
 }
@@ -27,6 +32,7 @@ input[type="number"],
 /* Remove number spinner from Firefox */
 
 input[type=number] {
+    -webkit-appearance: textfield;
     -moz-appearance: textfield;
 }
 
@@ -36,6 +42,7 @@ input[type=number] {
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
+    -moz-appearance: none;
     margin: 0;
     /* Removes leftover margin */
 }

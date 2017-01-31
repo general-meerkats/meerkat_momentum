@@ -156,7 +156,7 @@ var focus = {
 		var taskId = $taskSelected.attr('id');
 
 		var index = todoList.findIndex(function(x) {
-			return x.id == taskId;
+			return x.id === taskId;
 		});
 
 		todoList[index].isChecked = !todoList[index].isChecked;
