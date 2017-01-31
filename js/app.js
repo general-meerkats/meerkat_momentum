@@ -11,9 +11,12 @@ $(document).ready(function () {
     BG.init();
     
     // load panels module
-	Weather.init()
-    Panels.init() // <-- call public .init() method from panels.js
+    Panels.init();
+    
+    // load weather module
+    Weather.init();
 
-    // etc
+    // load quote module
+    Quotes.getQuote();
     
 });
