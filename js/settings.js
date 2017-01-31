@@ -126,4 +126,4 @@
         
     }());
 
-})(jQuery, LS);
+}(jQuery, LS));
