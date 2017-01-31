@@ -102,22 +102,30 @@
             
             // show/hide todos
             if (!state.showTodos) {
-                $('#todos-btn').css('display', 'none');
+                showElement('#todos-btn');
             } else {
-                $('#todos-btn').css('display', 'block');
+                hideElement('#todos-btn');
             }
             
             // show/hide weather
             if (!state.showWeather) {
-                $('#weather-feature').css('display', 'none');
+                hideElement('#weather-feature');
             } else {
-                $('#weather-feature').css('display', 'block');
+                showElement('#weather-feature');
             }
             
             // close settings panel
             $('#settings-panel').removeClass('left-panel-show');
             $('#overlay').hide();
             
+        }
+
+        function showElement(identifier) {
+            $(identifier).css('display', 'block');
+        }
+
+        function hideElement(identifier) {
+            $(identifier).css('display', 'none');
         }
         
         // fire on page load
