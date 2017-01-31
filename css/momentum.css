@@ -60,12 +60,18 @@ body {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
+       -moz-box-orient: vertical;
+        -ms-box-orient: vertical;
     -webkit-box-direction: normal;
+       -moz-box-direction: normal;
+        -ms-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
     -webkit-box-pack: start;
+       -moz-box-pack: start;
+        -ms-box-pack: start;
     -ms-flex-pack: start;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 /* full bleed background image container style */
@@ -81,7 +87,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-transition: opacity 0.75s linear;
-    transition: opacity 0.75s linear;
+       -moz-transition: opacity 0.75s linear;
+         -o-transition: opacity 0.75s linear;
+            transition: opacity 0.75s linear;
     opacity: 0;
     z-index: -1;
 }
@@ -124,9 +132,8 @@ header {
     
     /* shadow */
     background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
-    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    
 
     /* must be > 0 or Glyphicons show above header */
@@ -180,7 +187,6 @@ header {
     font-size: 22px;
 }
 
-
 /* ============================== END HEADER =============================== */
 
 
@@ -188,18 +194,26 @@ header {
 
 article {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
+       -moz-box-orient: horizontal;
+        -ms-box-orient: horizontal;
     -webkit-box-direction: normal;
+       -moz-box-direction: normal;
+        -ms-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: column;
     padding: 0.25em;
     width: 100%;
     -webkit-box-pack: center;
+       -moz-box-pack: center;
+        -ms-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
     /* push article beneath header */
@@ -213,6 +227,8 @@ article {
 
 section {
     -webkit-box-flex: 0;
+       -moz-box-flex: 0;
+        -ms-box-flex: 0;
     -ms-flex: 0;
     flex: 0;
     padding: 0.5em;
@@ -334,7 +350,6 @@ section #time-period {
     text-decoration: line-through;
 }
 
-
 /* =========================== END MAIN CONTENT ============================ */
 
 
@@ -363,6 +378,8 @@ footer {
 
 footer > .quote {
     -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+        -ms-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
     padding: 0 2em;
@@ -382,13 +399,14 @@ footer > .quote > a:hover {
     color: rgba(255, 255, 255, 1);
 }
 
-
 /* end quote feature */
 
 footer .footer-left,
 footer .footer-right {
     cursor: pointer;
     -webkit-box-flex: 0;
+       -moz-box-flex: 0;
+        -ms-box-flex: 0;
     -ms-flex: 0 auto;
     flex: 0 auto;
     border-bottom: 2px solid transparent;
@@ -415,9 +433,9 @@ footer .footer-right {
     padding: 1.3em 10px;
     /* prevent highlighting of text */
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 footer .footer-right:hover {
@@ -425,28 +443,7 @@ footer .footer-right:hover {
     border-bottom: 2px solid #fff;
 }
 
-
 /* ============================== END FOOTER =============================== */
-
-
-/* ============================== RESPONSIVE =============================== */
-
-
-/* Greater than 640x, show nav text & hide icons */
-
-@media all and (min-width: 640px) {}
-
-
-/* Tiny screens: narrow nav icon spacing & full width content */
-
-@media all and (max-width: 360px) {
-    section {
-        font-size: 2em;
-    }
-    article {
-        padding: 0 0 0.5em 0;
-    }
-}
 
 
 /*TODO LIST*/
