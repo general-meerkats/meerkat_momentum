@@ -1,3 +1,4 @@
+/*csslint box-sizing: false*/
 /* resets */
 
 * {
@@ -116,6 +117,7 @@ body {
 h1 {
     text-align: center;
     font-size: 2em;
+    border-bottom: 1px solid rgb(255, 255, 255);
     border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
@@ -138,9 +140,11 @@ header {
     padding: 0;
     
     /* shadow */
+    background: -webkit-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: -moz-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: -o-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    background: -ms-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0));
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));    
 
     /* must be > 0 or Glyphicons show above header */
@@ -293,6 +297,7 @@ section #time-period {
 }
 
 #focus-input:focus {
+    border: 1px solid rgba(255, 255, 255, 0.1);
     outline: 0;
 }
 
@@ -374,10 +379,12 @@ footer {
     font-weight: bold;
     
     /* shadow */
+    background: -webkit-gradient(top, rgba(0, 0, 0, 0), rgba(0,0,0,0.5));
     background: -webkit-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-    background: -o-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-    background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+    background: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0.5));
+    background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0.5));
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0,0,0,0.5));
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0.5));  
 }
 
 
@@ -468,7 +475,8 @@ footer .footer-right:hover {
     height: 48px;
 }
 
-#new-task {
+#new-task:focus {
+    border: 1px solid rgba(255, 255, 255, 0.1);
     outline: 0;
 }
 
