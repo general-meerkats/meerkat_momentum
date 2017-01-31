@@ -95,7 +95,7 @@
         function updateDom() {
             
             // call time module to re-render time & greeting
-            time.init();
+            Time.init();
             
             // re-load state
             loadState();
