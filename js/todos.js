@@ -139,8 +139,10 @@ var focus = {
 		var taskSelectedId = taskSelectedElement.attr('id');
 
 		var index = todoList.findIndex(function(x) {
-			return parseInt(x.id) === parseInt(taskSelectedId);
+			return x.id === +taskSelectedId;
 		});
+
+		if (index === -1) return; // if doesn't exists
 
 		todoList.splice(index, 1);
 		taskSelectedElement.remove();
@@ -153,8 +155,10 @@ var focus = {
 		var taskId = $taskSelected.attr('id');
 
 		var index = todoList.findIndex(function(x) {
-			return parseInt(x.id) === parseInt(taskId);
+			return x.id === +taskId;
 		});
+
+		if (index === -1) return; // if doesn't exists
 
 		todoList[index].isChecked = !todoList[index].isChecked;
 
