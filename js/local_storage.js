@@ -1,47 +1,6 @@
 /* jshint esversion:6 */
 /* globals window */
 
-/* Example use:
-
-    // some anon IIFE:
-    (function(LS) {
-
-       var someDefault = [
-          ['Mr Roboto']
-       ];
-
-       // FETCH INPUT DATA FROM EITHER localStorage OR someDefault
-       // @params  [none]
-       // @returns [user name or default greeting]
-       //
-       function loadState() {
-          if (LS.getData('momentum-storage')) {
-             console.log('Using saved data from local storage');
-             return LS.getData('momentum-storage');
-          } else {
-             console.log('No data in local storage');
-             return someDefault;
-          }
-       }
-
-       // RENDER SOME STUFF
-       // @params  [none]
-       // @returns [none]
-       //
-       function render() {
-          // call loadState, which returns array
-          var arr = loadState();
-          // render
-          $('#output').html('Domo arigato, ' + arr[0]);
-       }
-
-       // call on page load
-       render();
-
-    })(LS);  // <-- pass LS into the IFFE
-
-*/
-
 var LS = (function() {
 
    /** 
