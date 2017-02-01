@@ -115,7 +115,7 @@
             }
             
             // close settings panel
-            $('#settings-panel').removeClass('left-panel-show');
+            $settingsPanel.removeClass('left-panel-show');
             $('#overlay').hide();
             
         }
