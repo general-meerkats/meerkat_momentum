@@ -102,7 +102,7 @@ var focus = {
 
 	init: function(){
 		this.bindEvents();
-		this.render();
+		// this.render();  // we no longer have or need this method...
 	}
 }
 focus.init();
