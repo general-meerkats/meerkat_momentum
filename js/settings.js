@@ -102,9 +102,9 @@
             
             // show/hide todos
             if (!state.showTodos) {
-                showElement('#todos-btn');
-            } else {
                 hideElement('#todos-btn');
+            } else {
+                showElement('#todos-btn');
             }
             
             // show/hide weather
