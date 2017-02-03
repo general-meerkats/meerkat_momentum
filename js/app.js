@@ -25,4 +25,7 @@ $(document).ready(function () {
     // load quote module
     Quotes.getQuote();
     
+    // load Todos module
+    Todos.init();
+    
 });

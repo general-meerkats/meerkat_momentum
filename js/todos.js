@@ -1,126 +1,133 @@
 /* jshint esversion:6 */
 /* globals $, console, LS */
 
-var focus = {
+var Todos = (function() {
     
-    cacheDom: function() {
-        this.$todosPanel = $('#todos-panel');
-        this.$newTask    = this.$todosPanel.find('#new-task');
-        this.$taskList   = this.$todosPanel.find('#taskList');
-    },
+    var DOM = {};
+    
+    function cacheDom() {
+        DOM.$todosPanel = $('#todos-panel');
+        DOM.$newTask    = DOM.$todosPanel.find('#new-task');
+        DOM.$taskList   = DOM.$todosPanel.find('#taskList');
+    }
 
-    bindEvents: function () {
-        this.$newTask.on('keyup', this.add.bind(this));
-        this.$taskList.on('click', this.newHandler.bind(this));
-    },
+    function bindEvents() {
+        DOM.$newTask.on('keyup', add);
+        DOM.$taskList.on('click', newHandler);
+    }
     
-    newHandler: function(e) {
+    function newHandler(e) {
         
         if (e.target !== e.currentTarget) {
             
-            console.log(e.target.parentElement.className);
-            
             if (e.target.parentElement.className === 'check-task') {
-                this.toggleTask(e);
+                toggleTask(e);
             } else if (e.target.parentElement.className === 'delete-task') {
-                this.removeTask(e);
+                removeTask(e);
             } else {
                 return;
             }
         }
-    },
+    }
 
-    add: function (e) {
+    // add new todo item
+    function add(e) {
         
         var $input  = $(e.target),
             newTask = $input.val().trim(),
-            currentTasks;
+            currentTasks,
+            liItem;
 
         if ((e.which !== 13) || (!newTask)) {
             return;
         }
         
-        // load saved tasks, or create empty array if no saved tasks exist
-        if (!currentTasks) {
-            currentTasks = [];
-        } else {
+        // load saved todos or init empty array if no saved tasks exist
+        if (LS.getData('todo-list')) {
             currentTasks = LS.getData('todo-list');
+        } else {
+            currentTasks = [];
         }
         
-        console.log(currentTasks);
-        
-        // getting id of most recent added task
+        // getting id of most recent added todo
         var lastId = typeof currentTasks[0] === 'object' ? currentTasks[0].id + 1 : 0;
         
-        // the new object task
+        // create new todo object
         var newTaskObj = {
             id: lastId,
             task: newTask,
             isChecked: false
         };
-        // Adding the new task to the top
+        
+        // Add the new task to the top
         currentTasks.unshift(newTaskObj);
 
+        // save todos list
         LS.setData('todo-list', currentTasks);
 
+        // clear the input
         $input.val('');
-        // rendering the new new task added
-        var liItem = "<li id='" + newTaskObj.id + "'>" +
-            "<span class=\"check-task\"><i class=\"fa fa-square-o\" aria-hidden=\"true\"></i></span>" +
-            newTaskObj.task +
-            "<span class=\"delete-task\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span></li>";
-        $('#taskList').prepend(liItem);
-    },
+        
+        // render the newly-added task
+        DOM.$taskList.prepend(
+            `<li id="${newTaskObj.id}">
+                <span class="check-task">
+                    <i class="fa fa-square-o" aria-hidden="true"></i>
+                </span> ${newTaskObj.task}
+                <span class="delete-task">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+            </li>`
+        );
+        
+    }
     
-    getList: function () {
-        var todos = LS.getData('todo-list');
-
-        if (!todos) return;
-
+    // get all todos
+    function getList() {
+        
+        var todos = LS.getData('todo-list') ? LS.getData('todo-list') : [];
+        
         todos.forEach(function (item) {
-            var liItemChecked = "<li class=\"finished\" id='" + item.id + "'>" +
-                "<span class=\"check-task\"><i class=\"fa fa-check-square-o\" aria-hidden=\"true\"></i></span>" +
-                item.task +
-                "<span class=\"delete-task\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span></li>";
+            var liItemChecked = `<li class="finished" id="${item.id}"><span class="check-task"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>${item.task}<span class="delete-task"><i class="fa fa-times" aria-hidden="true"></i></span></li>`;
 
-            var liItemUnchecked = "<li id='" + item.id + "'>" +
-                "<span class=\"check-task\"><i class=\"fa fa-square-o\" aria-hidden=\"true\"></i></span>" +
-                item.task +
-                "<span class=\"delete-task\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></span></li>";
+            var liItemUnchecked = `<li id="${item.id}"><span class="check-task"><i class="fa fa-square-o" aria-hidden="true"></i></span>${item.task}<span class="delete-task"><i class="fa fa-times" aria-hidden="true"></i></span></li>`;
 
             if (item.isChecked) {
-                $('#taskList').append(liItemChecked);
+                DOM.$taskList.append(liItemChecked);
             } else {
-                $('#taskList').append(liItemUnchecked);
+                DOM.$taskList.append(liItemUnchecked);
             }
         });
-    },
+    }
     
-    removeTask: function (e) {
-        var todos = LS.getData('todo-list');
-        var taskSelectedElement = $(e.target).parent().parent();
-        var taskSelectedId = taskSelectedElement.attr('id');
-
-        var index = todos.findIndex(function (x) {
-            return x.id === +taskSelectedId;
-        });
+    // remove a todo item
+    function removeTask(e) {
+        var todos = LS.getData('todo-list'),
+            taskSelectedElement = $(e.target).parent().parent(),
+            taskSelectedId = taskSelectedElement.attr('id'),
+            
+            index = todos.findIndex(function (x) {
+                return x.id === +taskSelectedId;
+            });
 
         if (index === -1) return; // if doesn't exists
 
         todos.splice(index, 1);
         taskSelectedElement.remove();
         LS.setData('todo-list', todos);
-    },
+    }
     
-    toggleTask: function (e) {
-        var todos = LS.getData('todo-list');
-        var $target = $(e.target);
-        var $taskSelected = $target.parent().parent();
-        var taskId = $taskSelected.attr('id');
-
-        var index = todos.findIndex(function (x) {
-            return x.id === +taskId;
-        });
+    
+    // toggle completed
+    function toggleTask(e) {
+        var todos = LS.getData('todo-list'),
+            $target = $(e.target),
+            $taskSelected = $target.parent().parent(),
+            taskId = $taskSelected.attr('id'),
+            
+            index = todos.findIndex(function (x) {
+                return x.id === +taskId;
+            });
 
         if (index === -1) return; // if doesn't exists
 
@@ -135,16 +142,21 @@ var focus = {
         }
 
         LS.setData('todo-list', todos);
-    },
+    }
+    
 
-    init: function () {
+    function init() {
         
         $("form").submit(function () { return false; });
         
-        this.cacheDom();        
-        this.getList();
-        this.bindEvents();
-//        this.render();
+        cacheDom();        
+        bindEvents();
+        getList();
     }
-};
-focus.init();
+    
+    
+    return {
+        init: init
+    };
+    
+}());
