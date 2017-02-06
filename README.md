@@ -8,8 +8,8 @@
 
 Demo:
 
-https://belcurv.github.io/meerkat_momentum/
+https://general-meerkats.github.io/meerkat_momentum/
 
 ----------------
 
-Wiki: [Using the LS local storage module](https://github.com/belcurv/meerkat_momentum/wiki/Local-Storage-module)
+Wiki: [Using the LS local storage module](https://github.com/general-meerkats/meerkat_momentum/wiki/Local-Storage-module)
