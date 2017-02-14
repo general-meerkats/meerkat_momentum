@@ -10,7 +10,8 @@ var BG = (function () {
     */
     function init() {
         
-        var imgUrl = 'https://unsplash.it/1920/1080/?random';
+        // change to source.unsplash API because permits filtering by category
+        var imgUrl = 'https://source.unsplash.com/category/nature/1920x1080';
         
         $.when(loadImg(imgUrl)).done(render);
     }
