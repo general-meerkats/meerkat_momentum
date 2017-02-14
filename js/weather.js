@@ -62,7 +62,7 @@ var Weather = (function () {
                 });
             })
             .then(function (data) {
-                console.log(data); // Should >> Object {position: Object, weather: Object}
+                console.log('{city: String, weather: Object} // ', data);
                 renderFeature(data);
                 renderPanel(data);
             })
@@ -72,12 +72,14 @@ var Weather = (function () {
 
     // obtain city name
     function getCity(data) {
+        
+        // console.log('getCity ', data);  // diag
 
         // just return if data.position already has city,
         // which it will if we used ip-based location
         if (data.position.city) {
             return {
-                position : data.position,
+                city     : data.position.city,
                 weather  : data.weather
             };
 
@@ -96,11 +98,26 @@ var Weather = (function () {
             return $.getJSON(api.endpoint, api.params)
                 .then(function (loc) {
                     return {
-                        position : loc.address,
+                        city : translateCity(loc),
                         weather  : data.weather
                     };
                 });
         }
+    }
+    
+    
+    // translate location data response to ensure we give a 'city'
+    // to the feature renderer. Needed because location responses can include
+    // non-city entities (town, village, etc)
+    function translateCity(c) {
+        
+        // console.log(c); // diag
+        
+        var okCities = ['city', 'village', 'hamlet', 'town', 'suburb', 'neighbourhood'],
+            keys     = Object.keys(c.address),
+            match    = keys.filter( (key) => (okCities.indexOf(key) !== -1) )[0];
+        
+        return (match) ? c.address[match] : 'Forecast';
     }
 
 
@@ -108,7 +125,7 @@ var Weather = (function () {
     function renderFeature(data) {
         var icon  = data.weather.currently.icon,
             temp  = Math.round(data.weather.currently.temperature),
-            city  = data.position.city.toUpperCase(),
+            city  = data.city.toUpperCase(),
             $wi   = $('<span id="icon_img"></span>'),
             $temp = '<span class="temp">' + temp + '&deg</span>',
             $loc  = '<p class="location">' + city + '</p>';
@@ -132,16 +149,15 @@ var Weather = (function () {
             $daily   = $('<pre>' + JSON.stringify(daily, null, 2) + '</pre>');
 
         $table
-            .append(['<thead>',
-                 '<tr>',
-                 '<th class="left">Day</th>',
-                 '<th>Low</th>',
-                 '<th>High</th>',
-                 '<th>Weather</th>',
-                 '</tr',
-                 '</thead>',
-                 '<tbody>'
-                ].join(''))
+            .append(`<thead>
+                       <tr>
+                         <th class="left">Day</th>
+                         <th>Low</th>
+                         <th>High</th>
+                         <th>Weather</th>
+                       </tr>
+                     </thead>
+                     <tbody>`);
 
         daily.forEach(function (day) {
 
@@ -162,7 +178,7 @@ var Weather = (function () {
                 .append($trA)
                 .append($trB);
 
-        })
+        });
 
         $weatherPanel
             .append($summary)
